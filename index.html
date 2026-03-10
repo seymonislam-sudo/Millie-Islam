@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Millie Islam — Media &amp; Creative Portfolio</title>
+<meta name="description" content="Millie Islam – Media student at UCL. Producer, writer, creative director. Editorial, film, and digital storytelling.">
+<meta property="og:title" content="Millie Islam — Media & Creative Portfolio">
+<meta property="og:description" content="Producer, writer, creative director. Editorial, film, and digital storytelling.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+–ink: #0a0a0a;
+–paper: #f5f0eb;
+–cream: #ede6dd;
+–accent: #c43e2a;
+–muted: #7a7168;
+–highlight: #e8d5b7;
+–serif: ‘Playfair Display’, Georgia, serif;
+–sans: ‘Instrument Sans’, ‘Helvetica Neue’, sans-serif;
+–mono: ‘JetBrains Mono’, monospace;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+font-family: var(–sans);
+background: var(–paper);
+color: var(–ink);
+overflow-x: hidden;
+-webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(–accent); color: var(–paper); }
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.85’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.04’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 9999;
+}
+
+/* ── LOADING SCREEN ── */
+.loader {
+position: fixed;
+inset: 0;
+background: var(–ink);
+z-index: 10000;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.loader.done { opacity: 0; visibility: hidden; }
+.loader-text {
+font-family: var(–serif);
+font-size: clamp(2rem, 6vw, 5rem);
+font-weight: 900;
+color: var(–paper);
+letter-spacing: -0.03em;
+clip-path: inset(0 100% 0 0);
+animation: reveal 1.2s cubic-bezier(0.77, 0, 0.18, 1) 0.3s forwards;
+}
+@keyframes reveal {
+to { clip-path: inset(0 0 0 0); }
+}
+
+/* ── NAVIGATION ── */
+nav {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 100;
+padding: 1.25rem 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+mix-blend-mode: difference;
+}
+nav * { color: var(–paper) !important; }
+.nav-logo {
+font-family: var(–serif);
+font-weight: 900;
+font-size: 1.1rem;
+letter-spacing: -0.02em;
+text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+font-family: var(–mono);
+font-size: 0.7rem;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+text-decoration: none;
+position: relative;
+}
+.nav-links a::after {
+content: ‘’;
+position: absolute;
+bottom: -3px;
+left: 0;
+width: 0;
+height: 1px;
+background: currentColor;
+transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-links a:hover::after { width: 100%; }
+
+/* ── MOBILE NAV ── */
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-toggle span {
+display: block;
+width: 24px;
+height: 1.5px;
+background: var(–paper);
+margin: 6px 0;
+transition: all 0.3s ease;
+}
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+padding: 2rem;
+position: relative;
+overflow: hidden;
+background: var(–ink);
+}
+.hero-bg {
+position: absolute;
+inset: 0;
+background:
+radial-gradient(ellipse at 20% 50%, rgba(196, 62, 42, 0.15) 0%, transparent 60%),
+radial-gradient(ellipse at 80% 20%, rgba(232, 213, 183, 0.08) 0%, transparent 50%),
+var(–ink);
+}
+.hero-content {
+position: relative;
+z-index: 2;
+padding-bottom: 3rem;
+}
+.hero-label {
+font-family: var(–mono);
+font-size: 0.65rem;
+text-transform: uppercase;
+letter-spacing: 0.25em;
+color: var(–accent);
+margin-bottom: 1.5rem;
+opacity: 0;
+animation: fadeUp 0.8s ease 1.8s forwards;
+}
+.hero h1 {
+font-family: var(–serif);
+font-size: clamp(3.5rem, 12vw, 10rem);
+font-weight: 900;
+line-height: 0.9;
+letter-spacing: -0.04em;
+color: var(–paper);
+margin-bottom: 2rem;
+}
+.hero h1 span {
+display: block;
+opacity: 0;
+transform: translateY(80px);
+animation: heroText 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero h1 span:nth-child(1) { animation-delay: 1.6s; }
+.hero h1 span:nth-child(2) { animation-delay: 1.75s; }
+.hero h1 em {
+font-style: italic;
+color: var(–accent);
+}
+@keyframes heroText {
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+to { opacity: 1; }
+}
+.hero-meta {
+display: flex;
+gap: 3rem;
+flex-wrap: wrap;
+opacity: 0;
+animation: fadeUp 0.8s ease 2.1s forwards;
+}
+.hero-meta-item {
+font-family: var(–mono);
+font-size: 0.7rem;
+color: var(–muted);
+text-transform: uppercase;
+letter-spacing: 0.1em;
+line-height: 1.8;
+}
+.hero-meta-item strong {
+display: block;
+font-family: var(–sans);
+font-size: 0.95rem;
+color: var(–paper);
+text-transform: none;
+letter-spacing: 0;
+font-weight: 500;
+}
+.hero-scroll {
+position: absolute;
+bottom: 2rem;
+right: 2rem;
+z-index: 2;
+opacity: 0;
+animation: fadeUp 0.8s ease 2.5s forwards;
+}
+.hero-scroll span {
+font-family: var(–mono);
+font-size: 0.6rem;
+text-transform: uppercase;
+letter-spacing: 0.2em;
+color: var(–muted);
+writing-mode: vertical-rl;
+}
+.hero-scroll::before {
+content: ‘’;
+display: block;
+width: 1px;
+height: 40px;
+background: var(–accent);
+margin: 0 auto 0.75rem;
+animation: scrollLine 2s ease infinite;
+}
+@keyframes scrollLine {
+0%, 100% { transform: scaleY(1); opacity: 1; }
+50% { transform: scaleY(0.4); opacity: 0.3; }
+}
+
+/* ── SECTION COMMON ── */
+section { padding: 8rem 2rem; }
+.section-label {
+font-family: var(–mono);
+font-size: 0.6rem;
+text-transform: uppercase;
+letter-spacing: 0.3em;
+color: var(–accent);
+margin-bottom: 1rem;
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+.section-label::before {
+content: ‘’;
+width: 2rem;
+height: 1px;
+background: var(–accent);
+}
+.section-title {
+font-family: var(–serif);
+font-size: clamp(2.2rem, 5vw, 4rem);
+font-weight: 900;
+letter-spacing: -0.03em;
+line-height: 1.05;
+margin-bottom: 3rem;
+}
+.section-title em { font-style: italic; color: var(–accent); }
+
+/* ── ANIMATE ON SCROLL ── */
+.anim {
+opacity: 0;
+transform: translateY(40px);
+transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.anim.visible { opacity: 1; transform: translateY(0); }
+
+/* ── ABOUT ── */
+.about {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4rem;
+max-width: 1200px;
+margin: 0 auto;
+}
+.about-text p {
+font-size: 1.1rem;
+line-height: 1.75;
+color: var(–ink);
+margin-bottom: 1.5rem;
+}
+.about-text p:first-of-type::first-letter {
+font-family: var(–serif);
+font-size: 3.5rem;
+float: left;
+line-height: 0.8;
+margin-right: 0.5rem;
+margin-top: 0.15rem;
+color: var(–accent);
+font-weight: 900;
+}
+.about-details {
+padding-top: 1rem;
+}
+.detail-block {
+border-top: 1px solid rgba(10,10,10,0.1);
+padding: 1.25rem 0;
+}
+.detail-label {
+font-family: var(–mono);
+font-size: 0.6rem;
+text-transform: uppercase;
+letter-spacing: 0.2em;
+color: var(–muted);
+margin-bottom: 0.4rem;
+}
+.detail-value {
+font-size: 1rem;
+font-weight: 600;
+line-height: 1.5;
+}
+.detail-value .sub {
+font-weight: 400;
+color: var(–muted);
+font-size: 0.85rem;
+}
+
+/* ── EXPERIENCE ── */
+.experience-section { background: var(–ink); color: var(–paper); }
+.experience-section .section-label { color: var(–accent); }
+.experience-section .section-label::before { background: var(–accent); }
+.experience-section .section-title { color: var(–paper); }
+
+.exp-grid {
+max-width: 1200px;
+margin: 0 auto;
+}
+.exp-item {
+display: grid;
+grid-template-columns: 200px 1fr;
+gap: 3rem;
+padding: 3rem 0;
+border-top: 1px solid rgba(245, 240, 235, 0.08);
+}
+.exp-year {
+font-family: var(–mono);
+font-size: 0.7rem;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+color: var(–muted);
+padding-top: 0.35rem;
+}
+.exp-role {
+font-family: var(–serif);
+font-size: 1.5rem;
+font-weight: 700;
+margin-bottom: 0.25rem;
+letter-spacing: -0.01em;
+}
+.exp-org {
+font-size: 0.95rem;
+color: var(–accent);
+font-weight: 600;
+margin-bottom: 1rem;
+}
+.exp-desc {
+color: rgba(245, 240, 235, 0.6);
+line-height: 1.7;
+font-size: 0.95rem;
+max-width: 600px;
+}
+
+/* ── WORK / PROJECTS ── */
+.work-section { background: var(–cream); }
+.work-grid {
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 2rem;
+}
+.work-card {
+background: var(–paper);
+padding: 2.5rem;
+position: relative;
+overflow: hidden;
+transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+border: 1px solid rgba(10,10,10,0.05);
+}
+.work-card:hover { transform: translateY(-4px); }
+.work-card::before {
+content: ‘’;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 3px;
+background: var(–accent);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.work-card:hover::before { transform: scaleX(1); }
+.work-card-number {
+font-family: var(–serif);
+font-size: 3.5rem;
+font-weight: 900;
+color: rgba(10,10,10,0.04);
+line-height: 1;
+margin-bottom: 1rem;
+}
+.work-card-type {
+font-family: var(–mono);
+font-size: 0.6rem;
+text-transform: uppercase;
+letter-spacing: 0.2em;
+color: var(–accent);
+margin-bottom: 0.75rem;
+}
+.work-card h3 {
+font-family: var(–serif);
+font-size: 1.4rem;
+font-weight: 700;
+letter-spacing: -0.01em;
+margin-bottom: 0.75rem;
+}
+.work-card p {
+font-size: 0.9rem;
+line-height: 1.65;
+color: var(–muted);
+}
+.work-card-tag {
+display: inline-block;
+margin-top: 1.25rem;
+font-family: var(–mono);
+font-size: 0.6rem;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+padding: 0.4rem 0.75rem;
+border: 1px solid rgba(10,10,10,0.12);
+color: var(–ink);
+}
+
+/* ── SKILLS MARQUEE ── */
+.marquee-section {
+padding: 4rem 0;
+overflow: hidden;
+border-top: 1px solid rgba(10,10,10,0.08);
+border-bottom: 1px solid rgba(10,10,10,0.08);
+}
+.marquee-track {
+display: flex;
+animation: marquee 30s linear infinite;
+width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-item {
+font-family: var(–serif);
+font-size: clamp(1.5rem, 3vw, 2.5rem);
+font-weight: 700;
+white-space: nowrap;
+padding: 0 2rem;
+color: rgba(10,10,10,0.12);
+transition: color 0.3s ease;
+}
+.marquee-item:hover { color: var(–accent); }
+.marquee-item::after {
+content: ‘✦’;
+margin-left: 2rem;
+font-size: 0.6em;
+vertical-align: middle;
+color: var(–accent);
+opacity: 0.4;
+}
+@keyframes marquee {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+
+/* ── EDUCATION ── */
+.edu-grid {
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4rem;
+}
+.edu-item { padding: 2rem 0; border-top: 2px solid var(–ink); }
+.edu-institution {
+font-family: var(–serif);
+font-size: 1.6rem;
+font-weight: 700;
+letter-spacing: -0.02em;
+margin-bottom: 0.5rem;
+}
+.edu-degree {
+font-size: 1rem;
+color: var(–muted);
+margin-bottom: 0.25rem;
+line-height: 1.5;
+}
+.edu-highlight {
+font-family: var(–mono);
+font-size: 0.7rem;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+color: var(–accent);
+margin-top: 0.75rem;
+}
+
+/* ── CONTACT ── */
+.contact-section {
+background: var(–ink);
+color: var(–paper);
+text-align: center;
+padding: 10rem 2rem;
+position: relative;
+overflow: hidden;
+}
+.contact-section::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: radial-gradient(circle at 50% 50%, rgba(196,62,42,0.1) 0%, transparent 60%);
+}
+.contact-inner { position: relative; z-index: 2; }
+.contact-heading {
+font-family: var(–serif);
+font-size: clamp(2.5rem, 7vw, 6rem);
+font-weight: 900;
+letter-spacing: -0.04em;
+line-height: 1;
+margin-bottom: 2rem;
+}
+.contact-heading em { color: var(–accent); font-style: italic; }
+.contact-sub {
+font-size: 1.05rem;
+color: var(–muted);
+margin-bottom: 3rem;
+max-width: 480px;
+margin-left: auto;
+margin-right: auto;
+line-height: 1.7;
+}
+.contact-links {
+display: flex;
+justify-content: center;
+gap: 2rem;
+flex-wrap: wrap;
+}
+.contact-link {
+font-family: var(–mono);
+font-size: 0.75rem;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+color: var(–paper);
+text-decoration: none;
+padding: 1rem 2.5rem;
+border: 1px solid rgba(245,240,235,0.15);
+transition: all 0.4s ease;
+position: relative;
+overflow: hidden;
+}
+.contact-link::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: var(–accent);
+transform: translateY(100%);
+transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.contact-link:hover::before { transform: translateY(0); }
+.contact-link span { position: relative; z-index: 1; }
+
+/* ── FOOTER ── */
+footer {
+background: var(–ink);
+border-top: 1px solid rgba(245,240,235,0.06);
+padding: 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+footer span {
+font-family: var(–mono);
+font-size: 0.6rem;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+color: var(–muted);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+nav { padding: 1rem 1.5rem; }
+.nav-links {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: var(–ink);
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 2.5rem;
+z-index: 99;
+}
+.nav-links.open { display: flex; }
+.nav-links a { font-size: 1rem; }
+.nav-toggle { display: block; z-index: 101; }
+
+section { padding: 5rem 1.5rem; }
+.hero { padding: 1.5rem; }
+.hero-meta { gap: 2rem; }
+
+.about { grid-template-columns: 1fr; gap: 3rem; }
+.edu-grid { grid-template-columns: 1fr; gap: 2rem; }
+.work-grid { grid-template-columns: 1fr; }
+
+.exp-item {
+grid-template-columns: 1fr;
+gap: 0.75rem;
+padding: 2rem 0;
+}
+
+.contact-section { padding: 6rem 1.5rem; }
+.contact-links { flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 480px) {
+.hero h1 { font-size: clamp(2.8rem, 14vw, 5rem); }
+.section-title { font-size: clamp(1.8rem, 7vw, 3rem); }
+.hero-scroll { display: none; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- LOADER -->
+
+<div class="loader">
+  <div class="loader-text">Millie Islam</div>
+</div>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#" class="nav-logo">MI.</a>
+  <button class="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-label">Media · Film · Editorial · Digital Storytelling</div>
+    <h1>
+      <span>Millie</span>
+      <span><em>Islam</em></span>
+    </h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        Based in<strong>London, UK</strong>
+      </div>
+      <div class="hero-meta-item">
+        Currently<strong>BA Media, UCL</strong>
+      </div>
+      <div class="hero-meta-item">
+        Focus<strong>Production &amp; Editorial</strong>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" style="padding-bottom: 4rem;">
+  <div class="about">
+    <div class="about-text anim">
+      <div class="section-label">About</div>
+      <div class="section-title">Stories told with<br><em>intention</em></div>
+      <p>Currently pursuing a BA in Media at University College London and averaging a First, I work across editorial content, film production, and creative direction. From producing a short film selected for screening at TNC XPO 2026 to leading large-scale fashion events, my practice bridges research-driven storytelling with hands-on production craft.</p>
+      <p>I'm drawn to work that sits at the intersection of culture and media — whether that's writing a feature article for Sight &amp; Sound, directing editorial fashion shoots, or managing social platforms for arts organisations. I bring rigour, creative ambition, and a collaborative spirit to every project.</p>
+    </div>
+    <div class="about-details anim">
+      <div class="detail-block">
+        <div class="detail-label">Specialisms</div>
+        <div class="detail-value">Production Management, Copywriting &amp; Editorial, Creative Direction, Digital Content Strategy</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-label">Industries</div>
+        <div class="detail-value">Film &amp; Television, Fashion Editorial, Arts &amp; Culture, Digital Media</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-label">Recognition</div>
+        <div class="detail-value"><em>NEST</em> — Selected for TNC XPO 2026<br><span class="sub">The New Black Film Collective screening</span></div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-label">Training</div>
+        <div class="detail-value">Introduction to Screenwriting<br>The Business of Film<br><span class="sub">Professional development courses</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS MARQUEE -->
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Production</span>
+    <span class="marquee-item">Editorial</span>
+    <span class="marquee-item">Film</span>
+    <span class="marquee-item">Copywriting</span>
+    <span class="marquee-item">Creative Direction</span>
+    <span class="marquee-item">Social Media</span>
+    <span class="marquee-item">Research</span>
+    <span class="marquee-item">Screenwriting</span>
+    <span class="marquee-item">Digital Storytelling</span>
+    <span class="marquee-item">Video Essays</span>
+    <span class="marquee-item">Production</span>
+    <span class="marquee-item">Editorial</span>
+    <span class="marquee-item">Film</span>
+    <span class="marquee-item">Copywriting</span>
+    <span class="marquee-item">Creative Direction</span>
+    <span class="marquee-item">Social Media</span>
+    <span class="marquee-item">Research</span>
+    <span class="marquee-item">Screenwriting</span>
+    <span class="marquee-item">Digital Storytelling</span>
+    <span class="marquee-item">Video Essays</span>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+
+<section id="experience" class="experience-section">
+  <div class="exp-grid">
+    <div class="section-label anim">Experience</div>
+    <div class="section-title anim">Where I've<br><em>worked</em></div>
+
+```
+<div class="exp-item anim">
+  <div class="exp-year">2025 — Present</div>
+  <div>
+    <div class="exp-role">Head of Production</div>
+    <div class="exp-org">UCL MODO Fashion Society</div>
+    <div class="exp-desc">Led the planning and delivery of large-scale events including a university fashion show and magazine launch. Oversaw timelines, logistics, venue sourcing, and live execution. Collaborated on budget planning, coordinated across internal and external stakeholders, and managed all stages of production delivery.</div>
+  </div>
+</div>
+
+<div class="exp-item anim">
+  <div class="exp-year">Apr — Jun 2025</div>
+  <div>
+    <div class="exp-role">Work Placement</div>
+    <div class="exp-org">British Film Institute (BFI)</div>
+    <div class="exp-desc">Industry-facing placement spanning production, distribution, archiving, and criticism. Produced a feature-length article with potential for Sight &amp; Sound publication, a video essay presented to BFI professionals, and a promotional video for the BFI National Archive. Gained insight into professional VFX practices through visits to Industrial Light &amp; Magic.</div>
+  </div>
+</div>
+
+<div class="exp-item anim">
+  <div class="exp-year">May — Nov 2022</div>
+  <div>
+    <div class="exp-role">Social Media Manager</div>
+    <div class="exp-org">KidsArtUK</div>
+    <div class="exp-desc">Developed interactive social media content and engagement-led formats across Instagram and Facebook. Created visually cohesive digital content including graphic collages, editorial-style reviews, and original photography. Managed audience engagement and maintained cross-platform brand consistency.</div>
+  </div>
+</div>
+
+<div class="exp-item anim">
+  <div class="exp-year">Apr 2022</div>
+  <div>
+    <div class="exp-role">Work Placement</div>
+    <div class="exp-org">Knight Hall Literary Agency</div>
+    <div class="exp-desc">Read and assessed scripts, delivering structured feedback to support editorial evaluation. Analysed narrative structure, thematic strength, and commercial viability for potential stage and screen adaptations. Managed professional communications with prospective clients and production companies.</div>
+  </div>
+</div>
+
+<div class="exp-item anim">
+  <div class="exp-year">Sep 2022 — Present</div>
+  <div>
+    <div class="exp-role">Extra Club Assistant</div>
+    <div class="exp-org">St Paul's C of E Primary School</div>
+    <div class="exp-desc">Supervised and supported primary school students in an after-school setting. Planned and delivered structured activities, developing strong organisational and leadership skills while communicating effectively with parents, staff, and children.</div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- WORK / PROJECTS -->
+
+<section id="work" class="work-section">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="section-label anim">Selected Work</div>
+    <div class="section-title anim">Creative<br><em>projects</em></div>
+    <div class="work-grid">
+
+```
+  <div class="work-card anim">
+    <div class="work-card-number">01</div>
+    <div class="work-card-type">Film</div>
+    <h3>NEST</h3>
+    <p>Producer and co-writer on a short film selected for screening at The New Black Film Collective (TNC) XPO 2026 — a platform celebrating emerging Black filmmakers.</p>
+    <span class="work-card-tag">TNC XPO 2026</span>
+  </div>
+
+  <div class="work-card anim">
+    <div class="work-card-number">02</div>
+    <div class="work-card-type">Fashion Editorial</div>
+    <h3>UCL MODO Shoots</h3>
+    <p>Creative Director &amp; Writer for two editorial fashion shoots. Led concept development, creative direction, and scriptwriting for the society's published editorial content.</p>
+    <span class="work-card-tag">Creative Direction</span>
+  </div>
+
+  <div class="work-card anim">
+    <div class="work-card-number">03</div>
+    <div class="work-card-type">Editorial</div>
+    <h3>BFI Feature Article</h3>
+    <p>Feature-length article produced during BFI placement, with potential for publication in Sight &amp; Sound — the BFI's internationally recognised film magazine.</p>
+    <span class="work-card-tag">Sight &amp; Sound</span>
+  </div>
+
+  <div class="work-card anim">
+    <div class="work-card-number">04</div>
+    <div class="work-card-type">Video</div>
+    <h3>BFI Video Essay</h3>
+    <p>Video essay on visual culture presented to BFI professionals, alongside a short-form promotional video produced for the BFI National Archive.</p>
+    <span class="work-card-tag">BFI Archive</span>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+
+<section id="education">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="section-label anim">Education</div>
+    <div class="section-title anim">Academic<br><em>background</em></div>
+    <div class="edu-grid">
+      <div class="edu-item anim">
+        <div class="edu-institution">University College London</div>
+        <div class="edu-degree">BA Media — 2023 to 2026</div>
+        <div class="edu-highlight">Averaging a First</div>
+      </div>
+      <div class="edu-item anim">
+        <div class="edu-institution">Ashmole Academy</div>
+        <div class="edu-degree">A-Level Media Studies — A</div>
+        <div class="edu-degree">A-Level Sociology — B</div>
+        <div class="edu-degree">A-Level English Literature — B</div>
+        <div class="edu-highlight">2021 — 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact-section">
+  <div class="contact-inner anim">
+    <div class="section-label" style="justify-content: center;">Get in Touch</div>
+    <div class="contact-heading">Let's <em>create</em><br>something</div>
+    <div class="contact-sub">Open to editorial placements, production roles, freelance creative work, and collaborative projects across media, film, and digital content.</div>
+    <div class="contact-links">
+      <a href="mailto:millieislam@icloud.com" class="contact-link"><span>Email</span></a>
+      <a href="tel:+447412931822" class="contact-link"><span>Phone</span></a>
+      <a href="https://www.linkedin.com/in/millie-islam" class="contact-link" target="_blank" rel="noopener"><span>LinkedIn</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <span>© 2026 Millie Islam</span>
+  <span>London, UK</span>
+</footer>
+
+<script>
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => document.querySelector('.loader').classList.add('done'), 1800);
+});
+
+// Mobile nav
+const toggle = document.querySelector('.nav-toggle');
+const links = document.querySelector('.nav-links');
+toggle.addEventListener('click', () => {
+  toggle.classList.toggle('active');
+  links.classList.toggle('open');
+});
+links.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    toggle.classList.remove('active');
+    links.classList.remove('open');
+  });
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
