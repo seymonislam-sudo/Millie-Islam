@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Millie Islam — Media &amp; Creative Portfolio</title>
+<meta name="color-scheme" content="light only">
 <meta name="description" content="Millie Islam – Media student at UCL. Producer, writer, creative director. Editorial, film, and digital storytelling.">
 <meta property="og:title" content="Millie Islam — Media & Creative Portfolio">
 <meta property="og:description" content="Producer, writer, creative director. Editorial, film, and digital storytelling.">
@@ -27,12 +28,12 @@
 –mono: ‘JetBrains Mono’, monospace;
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; color-scheme: light only; }
 
 body {
 font-family: var(–sans);
-background: var(–paper);
-color: var(–ink);
+background-color: var(–paper) !important;
+color: var(–ink) !important;
 overflow-x: hidden;
 -webkit-font-smoothing: antialiased;
 }
@@ -53,7 +54,7 @@ z-index: 9999;
 .loader {
 position: fixed;
 inset: 0;
-background: var(–ink);
+background-color: var(–ink) !important;
 z-index: 10000;
 display: flex;
 align-items: center;
@@ -139,7 +140,8 @@ justify-content: flex-end;
 padding: 2rem;
 position: relative;
 overflow: hidden;
-background: var(–ink);
+background-color: var(–ink) !important;
+color: var(–paper) !important;
 }
 .hero-bg {
 position: absolute;
@@ -333,7 +335,7 @@ font-size: 0.85rem;
 }
 
 /* ── EXPERIENCE ── */
-.experience-section { background: var(–ink); color: var(–paper); }
+.experience-section { background-color: var(–ink) !important; color: var(–paper) !important; }
 .experience-section .section-label { color: var(–accent); }
 .experience-section .section-label::before { background: var(–accent); }
 .experience-section .section-title { color: var(–paper); }
@@ -378,7 +380,7 @@ max-width: 600px;
 }
 
 /* ── WORK / PROJECTS ── */
-.work-section { background: var(–cream); }
+.work-section { background-color: var(–cream) !important; color: var(–ink) !important; }
 .work-grid {
 max-width: 1200px;
 margin: 0 auto;
@@ -387,7 +389,8 @@ grid-template-columns: repeat(2, 1fr);
 gap: 2rem;
 }
 .work-card {
-background: var(–paper);
+background-color: var(–paper) !important;
+color: var(–ink) !important;
 padding: 2.5rem;
 position: relative;
 overflow: hidden;
@@ -517,8 +520,8 @@ margin-top: 0.75rem;
 
 /* ── CONTACT ── */
 .contact-section {
-background: var(–ink);
-color: var(–paper);
+background-color: var(–ink) !important;
+color: var(–paper) !important;
 text-align: center;
 padding: 10rem 2rem;
 position: relative;
@@ -581,7 +584,7 @@ transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
 /* ── FOOTER ── */
 footer {
-background: var(–ink);
+background-color: var(–ink) !important;
 border-top: 1px solid rgba(245,240,235,0.06);
 padding: 2rem;
 display: flex;
