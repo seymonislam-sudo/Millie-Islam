@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Millie Islam — Media &amp; Creative Portfolio</title>
-<meta name="color-scheme" content="light only">
 <meta name="description" content="Millie Islam – Media student at UCL. Producer, writer, creative director. Editorial, film, and digital storytelling.">
 <meta property="og:title" content="Millie Islam — Media & Creative Portfolio">
 <meta property="og:description" content="Producer, writer, creative director. Editorial, film, and digital storytelling.">
@@ -28,7 +27,7 @@
 –mono: ‘JetBrains Mono’, monospace;
 }
 
-html { scroll-behavior: smooth; font-size: 16px; color-scheme: light only; }
+html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
 font-family: var(–sans);
@@ -643,6 +642,24 @@ padding: 2rem 0;
 .section-title { font-size: clamp(1.8rem, 7vw, 3rem); }
 .hero-scroll { display: none; }
 }
+
+/* ── DARK MODE OVERRIDE ── */
+/* Prevent browser dark mode from interfering with our intentional colour scheme */
+@media (prefers-color-scheme: dark) {
+:root {
+color-scheme: light;
+–ink: #0a0a0a;
+–paper: #f5f0eb;
+–cream: #ede6dd;
+–accent: #c43e2a;
+–muted: #7a7168;
+}
+body { background-color: var(–paper); color: var(–ink); }
+.hero, .loader, .experience-section, .contact-section, footer { background-color: var(–ink); color: var(–paper); }
+.work-section { background-color: var(–cream); color: var(–ink); }
+.work-card { background-color: var(–paper); color: var(–ink); }
+img, svg { filter: none; }
+}
 </style>
 
 </head>
@@ -890,7 +907,7 @@ padding: 2rem 0;
     <div class="contact-heading">Let's <em>create</em><br>something</div>
     <div class="contact-sub">Open to editorial placements, production roles, freelance creative work, and collaborative projects across media, film, and digital content.</div>
     <div class="contact-links">
-      <a href="mailto:millieislam@icloud.com" class="contact-link"><span>Email</span></a>
+      <a href="/cdn-cgi/l/email-protection#7914101515101c100a15181439101a15160c1d571a1614" class="contact-link"><span>Email</span></a>
       <a href="tel:+447412931822" class="contact-link"><span>Phone</span></a>
       <a href="https://www.linkedin.com/in/millie-islam" class="contact-link" target="_blank" rel="noopener"><span>LinkedIn</span></a>
     </div>
@@ -904,38 +921,33 @@ padding: 2rem 0;
   <span>London, UK</span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
 // Loader
-window.addEventListener('load', () => {
-  setTimeout(() => document.querySelector('.loader').classList.add('done'), 1800);
+window.addEventListener(‘load’, () => {
+setTimeout(() => document.querySelector(’.loader’).classList.add(‘done’), 1800);
 });
 
 // Mobile nav
-const toggle = document.querySelector('.nav-toggle');
-const links = document.querySelector('.nav-links');
-toggle.addEventListener('click', () => {
-  toggle.classList.toggle('active');
-  links.classList.toggle('open');
+const toggle = document.querySelector(’.nav-toggle’);
+const links = document.querySelector(’.nav-links’);
+toggle.addEventListener(‘click’, () => {
+toggle.classList.toggle(‘active’);
+links.classList.toggle(‘open’);
 });
-links.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    toggle.classList.remove('active');
-    links.classList.remove('open');
-  });
+links.querySelectorAll(‘a’).forEach(a => {
+a.addEventListener(‘click’, () => {
+toggle.classList.remove(‘active’);
+links.classList.remove(‘open’);
+});
 });
 
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll('.anim').forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>
+entries.forEach((entry, i) => {
+if (entry.isIntersecting) {
+setTimeout(() => entry.target.classList.add(‘visible’), i * 80);
+observer.unobserve(entry.target);
+}
+});
+},
