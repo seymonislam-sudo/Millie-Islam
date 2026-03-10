@@ -610,8 +610,6 @@ section { padding: 5rem 1.5rem; }
     <div class="contact-heading">Let's <em>create</em><br>something</div>
     <div class="contact-sub">Open to editorial placements, production roles, freelance creative work, and collaborative projects across media, film, and digital content.</div>
     <div class="contact-links">
-      <a href="mailto:millieislam@icloud.com" class="contact-link"><span>Email</span></a>
-      <a href="tel:+447412931822" class="contact-link"><span>Phone</span></a>
       <a href="https://www.linkedin.com/in/millie-islam" class="contact-link" target="_blank" rel="noopener"><span>LinkedIn</span></a>
     </div>
   </div>
@@ -622,32 +620,28 @@ section { padding: 5rem 1.5rem; }
   <span>London, UK</span>
 </footer>
 
-<script>
-window.addEventListener('load', function() {
-  setTimeout(function() { document.querySelector('.loader').classList.add('done'); }, 1800);
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+window.addEventListener(‘load’, function() {
+setTimeout(function() { document.querySelector(’.loader’).classList.add(‘done’); }, 1800);
 });
-var toggle = document.querySelector('.nav-toggle');
-var navLinks = document.querySelector('.nav-links');
-toggle.addEventListener('click', function() {
-  toggle.classList.toggle('active');
-  navLinks.classList.toggle('open');
+var toggle = document.querySelector(’.nav-toggle’);
+var navLinks = document.querySelector(’.nav-links’);
+toggle.addEventListener(‘click’, function() {
+toggle.classList.toggle(‘active’);
+navLinks.classList.toggle(‘open’);
 });
-navLinks.querySelectorAll('a').forEach(function(a) {
-  a.addEventListener('click', function() {
-    toggle.classList.remove('active');
-    navLinks.classList.remove('open');
-  });
+navLinks.querySelectorAll(‘a’).forEach(function(a) {
+a.addEventListener(‘click’, function() {
+toggle.classList.remove(‘active’);
+navLinks.classList.remove(‘open’);
+});
 });
 var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry, i) {
-    if (entry.isIntersecting) {
-      setTimeout(function() { entry.target.classList.add('visible'); }, i * 80);
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.anim').forEach(function(el) { observer.observe(el); });
-</script>
-
-</body>
-</html>
+entries.forEach(function(entry, i) {
+if (entry.isIntersecting) {
+setTimeout(function() { entry.target.classList.add(‘visible’); }, i * 80);
+observer.unobserve(entry.target);
+}
+});
+}, { threshold
