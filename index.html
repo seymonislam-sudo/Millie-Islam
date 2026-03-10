@@ -2,324 +2,374 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Millie Islam | Media Portfolio</title>
+  <title>Millie Islam · Media & Film Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Media portfolio of UCL student Millie Islam – editorial, film and digital content.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Portfolio of Millie Islam, London-based media student specialising in film, editorial and digital content.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #050810;
+      --bg-elevated: #0b101c;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.12);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2933;
+      --chip-bg: #111827;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f5f5f7;
-      color: #111827;
+      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text-main);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
-    a { color: #2563eb; text-decoration: none; }
+    a { color: inherit; text-decoration: none; }
     a:hover { text-decoration: underline; }
+
     .page {
-      max-width: 960px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+      padding: 1.75rem 1.25rem 3rem;
     }
-    header {
+
+    /* Top nav */
+    .nav {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 3rem;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 1.5rem;
-      gap: 1.5rem;
-    }
-    .title-block h1 {
-      font-size: 2.2rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-    .title-block p {
-      margin-top: .5rem;
-      color: #4b5563;
-    }
-    .meta {
-      text-align: right;
-      font-size: .95rem;
-      color: #4b5563;
-    }
-    .meta a { display: block; }
-    section {
+      align-items: center;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
       margin-bottom: 2.5rem;
     }
-    section h2 {
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 600;
-      color: #6b7280;
-      margin-bottom: 1rem;
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
     }
-    .about {
-      max-width: 640px;
-      font-size: 1rem;
-      color: #111827;
-    }
-    .grid-two {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 2rem;
-    }
-    .experience-item {
-      margin-bottom: 1.5rem;
-    }
-    .experience-item h3 {
-      font-size: 1rem;
-      font-weight: 600;
-    }
-    .experience-meta {
-      font-size: .9rem;
-      color: #6b7280;
-      margin-bottom: .4rem;
-    }
-    .experience-item ul {
-      margin-left: 1.1rem;
-      margin-top: .3rem;
-      color: #374151;
-      font-size: .95rem;
-    }
-    .experience-item li { margin-bottom: .25rem; }
-    .tagline {
-      display: inline-block;
-      padding: .2rem .6rem;
+    .nav-logo {
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
-      background: #e0ecff;
-      color: #1d4ed8;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: .9rem;
+      background: linear-gradient(135deg, #1f2937, #020617);
+    }
+    .nav-title {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 500;
+      letter-spacing: .09em;
       font-size: .75rem;
       text-transform: uppercase;
-      letter-spacing: .12em;
-      margin-top: .6rem;
+      color: var(--text-muted);
     }
-    .pill {
-      display: inline-block;
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: .9rem;
+      color: var(--text-muted);
+    }
+    .nav-links a {
+      position: relative;
+      padding-bottom: .1rem;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width .25s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0,1.6fr) minmax(0,1.1fr);
+      gap: 2.4rem;
+      align-items: center;
+      margin-top: 2.4rem;
+      margin-bottom: 3rem;
+    }
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 1rem;
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    .badge {
+      padding: .15rem .55rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+    .hero-title {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: .01em;
+      margin-bottom: .75rem;
+    }
+    .hero-kicker {
+      font-size: .95rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+      margin-bottom: 1.4rem;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+    }
+    .chip {
+      padding: .25rem .7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--chip-bg);
+      font-size: .78rem;
+      color: var(--text-muted);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem;
+    }
+    .btn-primary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .87rem;
+      border-radius: 999px;
+      padding: .45rem .95rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s ease, transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      color: #111827;
+      box-shadow: 0 14px 30px rgba(15,23,42,.45);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(15,23,42,.6);
+    }
+    .btn-ghost {
+      border-color: var(--border-subtle);
+      color: var(--text-muted);
+      background: rgba(15,23,42,.6);
+    }
+    .btn-ghost:hover {
+      background: rgba(15,23,42,.9);
+    }
+
+    .hero-frame {
+      background: radial-gradient(circle at top, #1f2937 0, #020617 65%);
+      border-radius: 1.4rem;
+      padding: 1.6rem 1.8rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 24px 60px rgba(15,23,42,.8);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-frame-label {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--text-muted);
+      margin-bottom: .7rem;
+    }
+    .hero-frame-main {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: .95rem;
+      color: var(--text-main);
+      margin-bottom: .9rem;
+    }
+    .hero-frame-meta {
+      font-size: .8rem;
+      color: var(--text-muted);
+      margin-bottom: .9rem;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+    }
+    .hero-tag {
+      font-size: .75rem;
       padding: .18rem .55rem;
       border-radius: 999px;
-      border: 1px solid #d1d5db;
-      font-size: .8rem;
-      margin: .15rem .3rem .15rem 0;
-      color: #4b5563;
-      background: white;
+      background: rgba(15,23,42,.8);
+      border: 1px solid rgba(148,163,184,.5);
     }
-    .featured-grid {
+
+    /* Section shell */
+    section {
+      margin-bottom: 2.7rem;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+    }
+    .section-title {
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .section-sub {
+      font-size: .82rem;
+      color: var(--text-muted);
+    }
+
+    /* Projects grid */
+    .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
     }
-    .card {
-      background: #ffffff;
-      border-radius: .75rem;
-      padding: 1rem 1.1rem;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 10px 16px rgba(15, 23, 42, 0.04);
+    .project-card {
+      background: linear-gradient(145deg, rgba(15,23,42,.9), #020617);
+      border-radius: 1.1rem;
+      border: 1px solid var(--border-subtle);
+      padding: 1rem 1.1rem 1.1rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
     }
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: .15rem;
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 45px rgba(15,23,42,.8);
+      border-color: rgba(249,115,22,.45);
+      background: radial-gradient(circle at top left, rgba(249,115,22,.16), rgba(15,23,42,.95));
     }
-    .card p {
-      font-size: .9rem;
-      color: #4b5563;
+    .project-tag-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .65rem;
+      font-size: .78rem;
+      color: var(--text-muted);
+    }
+    .project-type {
+      padding: .15rem .55rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,.8);
+      border: 1px solid #334155;
+    }
+    .project-year {
+      font-size: .78rem;
+    }
+    .project-title {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: .98rem;
+      margin-bottom: .12rem;
+    }
+    .project-role {
+      font-size: .82rem;
+      color: var(--text-muted);
       margin-bottom: .4rem;
     }
-    .card span {
-      font-size: .8rem;
-      color: #6b7280;
+    .project-description {
+      font-size: .86rem;
+      color: #e5e7eb;
+      margin-bottom: .6rem;
     }
-    .contact-box {
-      background: #111827;
-      color: #f9fafb;
-      border-radius: .9rem;
-      padding: 1.5rem 1.7rem;
+    .project-meta {
+      font-size: .78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* About + skills row */
+    .about-row {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 2.2rem;
+    }
+    .about-text {
+      font-size: .92rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+    }
+    .skills-block-title {
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--text-muted);
+      margin-bottom: .5rem;
+    }
+    .skill-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .25rem;
+      padding: .24rem .7rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,.85);
+      border: 1px solid #374151;
+      font-size: .8rem;
+      color: #e5e7eb;
+      margin: .16rem .35rem .16rem 0;
+    }
+
+    /* Contact */
+    .contact-panel {
+      background: linear-gradient(135deg, #020617, #111827);
+      border-radius: 1.25rem;
+      border: 1px solid var(--border-subtle);
+      padding: 1.4rem 1.5rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
     }
-    .contact-box a {
-      color: #bfdbfe;
+    .contact-text {
+      font-size: .9rem;
+      color: var(--text-muted);
+    }
+    .contact-text strong {
+      color: var(--text-main);
       font-weight: 500;
     }
-    .btn {
-      display: inline-block;
-      background: #f9fafb;
-      color: #111827;
-      padding: .45rem .95rem;
-      border-radius: 999px;
-      font-size: .9rem;
-      border: none;
-      text-decoration: none;
-    }
+
     footer {
-      margin-top: 2rem;
-      font-size: .8rem;
-      color: #9ca3af;
+      margin-top: 2.2rem;
+      font-size: .76rem;
+      color: var(--text-muted);
       text-align: center;
     }
-    @media (max-width: 640px) {
-      header { text-align: left; }
-      .meta { text-align: left; }
-      .grid-two { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header>
-      <div class="title-block">
-        <h1>Millie Islam</h1>
-        <p>Media student specialising in editorial, film and digital content.</p>
-        <span class="tagline">UCL Media · London</span>
-      </div>
-      <div class="meta">
-        <span>London, UK</span>
-        <a href="mailto:millieislam@icloud.com">millieislam@icloud.com</a>
-        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn (optional)</a>
-        <!-- Add GitHub or portfolio links as needed -->
-      </div>
-    </header>
 
-    <section>
-      <h2>Profile</h2>
-      <p class="about">
-        Media student with experience supporting editorial and digital content production across cultural
-        and media organisations. Skilled in research, copywriting and coordinating production workflows,
-        with a strong interest in articles, digital storytelling and audience-focused content. Motivated
-        to contribute to collaborative, fast-paced editorial and production teams.
-      </p>
-    </section>
-
-    <section>
-      <h2>Featured work</h2>
-      <div class="featured-grid">
-        <article class="card">
-          <h3><em>NEST</em> · Short film</h3>
-          <span>Producer &amp; Co-writer</span>
-          <p>Short film selected for screening at The New Black Film Collective (TNC) XPO 2026.</p>
-          <!-- <a href="LINK_TO_VIDEO" target="_blank">Watch excerpt</a> -->
-        </article>
-        <article class="card">
-          <h3>BFI · Editorial &amp; video</h3>
-          <span>Work placement · 2025</span>
-          <p>Feature article, video essay on visual culture and a short promotional video for the BFI National Archive.</p>
-        </article>
-        <article class="card">
-          <h3>UCL MODO Fashion Society</h3>
-          <span>Creative direction &amp; writing</span>
-          <p>Concept development, creative direction and scripts for two editorial fashion shoots.</p>
-        </article>
-        <article class="card">
-          <h3>KidsArtUK · Social</h3>
-          <span>Social media manager</span>
-          <p>Interactive campaigns, visual content and cross-platform brand presence for a children’s arts organisation.</p>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <h2>Experience</h2>
-      <div class="grid-two">
-        <div>
-          <div class="experience-item">
-            <h3>Head of Production · UCL MODO Fashion Society</h3>
-            <div class="experience-meta">2025 – Present · London</div>
-            <ul>
-              <li>Planned and delivered large-scale events including a fashion show and magazine launch.</li>
-              <li>Coordinated stakeholders, venues and timelines from pre-production to live execution.</li>
-              <li>Worked with the Treasurer on budgets, balancing creative ideas with financial constraints.</li>
-            </ul>
-          </div>
-
-          <div class="experience-item">
-            <h3>Work Placement · British Film Institute (BFI)</h3>
-            <div class="experience-meta">Apr – Jun 2025 · London</div>
-            <ul>
-              <li>Produced editorial and video outputs for film and visual culture audiences.</li>
-              <li>Engaged with production, distribution, archiving and criticism through expert-led workshops.</li>
-              <li>Built strong analytical and presentation skills in a fast-paced, collaborative environment.</li>
-            </ul>
-          </div>
-
-          <div class="experience-item">
-            <h3>Work Placement · Knight Hall Literary Agency</h3>
-            <div class="experience-meta">Apr 2022 · London</div>
-            <ul>
-              <li>Read and assessed scripts, sharing structured feedback in editorial meetings.</li>
-              <li>Contributed to evaluating projects for stage and screen adaptation.</li>
-              <li>Managed professional email communications with clients and production companies.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div>
-          <div class="experience-item">
-            <h3>Social Media Manager · KidsArtUK</h3>
-            <div class="experience-meta">May – Nov 2022 · London</div>
-            <ul>
-              <li>Created interactive social content to grow engagement and reach.</li>
-              <li>Designed cohesive visuals and copy across Instagram and Facebook.</li>
-              <li>Updated website copy to align with live social campaigns.</li>
-            </ul>
-          </div>
-
-          <div class="experience-item">
-            <h3>Extra Club Assistant · St Paul’s C of E Primary</h3>
-            <div class="experience-meta">Sep 2022 – Present · London</div>
-            <ul>
-              <li>Supervised and supported primary pupils in an after‑school setting.</li>
-              <li>Planned structured activities, building strong organisation and communication skills.</li>
-            </ul>
-          </div>
-
-          <div class="experience-item">
-            <h3>Skills</h3>
-            <div>
-              <span class="pill">Editorial &amp; copywriting</span>
-              <span class="pill">Research</span>
-              <span class="pill">Production coordination</span>
-              <span class="pill">Event production</span>
-              <span class="pill">Social media</span>
-              <span class="pill">Digital storytelling</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Education &amp; development</h2>
-      <div class="experience-item">
-        <h3>BA Media · University College London (UCL)</h3>
-        <div class="experience-meta">2023 – 2026 · Averaging a First</div>
-      </div>
-      <div class="experience-item">
-        <h3>A‑levels · Ashmole Academy</h3>
-        <div class="experience-meta">2021 – 2023</div>
-        <ul>
-          <li>Media Studies (A), Sociology (B), English Literature (B).</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3>Short courses</h3>
-        <ul>
-          <li>Introduction to Screenwriting (MOOC).</li>
-          <li>The Business of Film (MOOC).</li>
-        </ul>
-      </div>
-    </section>
-
-    <section>
-      <h2>Contact</h2>
-      <div class="contact-box">
-        <div>
-          <p>For collaborations, internships or portfolio requests, please get in touch.</p>
-          <p>Email: <a href="mailto:millieislam@icloud.com">millieislam@icloud.com</a></p>
-        </div>
-        <a class="btn" href="#" target="_blank"
+    @media (max-width: 800px) {
+      .hero {
+        
