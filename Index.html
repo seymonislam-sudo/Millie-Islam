@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Millie Islam — Media & Film</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+–black: #080808;
+–off-black: #111111;
+–dark: #1a1a1a;
+–warm-white: #f2ede6;
+–cream: #e8e0d4;
+–gold: #c9a96e;
+–gold-light: #e2c99a;
+–muted: #6b6560;
+–red: #8b1a1a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–black);
+color: var(–warm-white);
+font-family: ‘Cormorant Garamond’, Georgia, serif;
+overflow-x: hidden;
+cursor: none;
+}
+
+/* Custom cursor */
+.cursor {
+position: fixed;
+width: 8px;
+height: 8px;
+background: var(–gold);
+border-radius: 50%;
+pointer-events: none;
+z-index: 9999;
+transform: translate(-50%, -50%);
+transition: transform 0.1s ease;
+}
+.cursor-ring {
+position: fixed;
+width: 36px;
+height: 36px;
+border: 1px solid rgba(201, 169, 110, 0.5);
+border-radius: 50%;
+pointer-events: none;
+z-index: 9998;
+transform: translate(-50%, -50%);
+transition: all 0.15s ease;
+}
+
+/* Grain overlay */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.04’/%3E%3C/svg%3E”);
+opacity: 0.35;
+pointer-events: none;
+z-index: 1000;
+}
+
+/* ── HEADER ── */
+header {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
+padding: 1.5rem 3rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+mix-blend-mode: normal;
+}
+header::after {
+content: ‘’;
+position: absolute;
+bottom: 0; left: 3rem; right: 3rem;
+height: 1px;
+background: linear-gradient(90deg, transparent, rgba(201,169,110,0.3), transparent);
+}
+
+.logo {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.7rem;
+letter-spacing: 0.25em;
+color: var(–gold);
+text-transform: uppercase;
+opacity: 0;
+animation: fadeIn 1s 0.5s forwards;
+}
+
+nav {
+display: flex;
+gap: 2.5rem;
+opacity: 0;
+animation: fadeIn 1s 0.7s forwards;
+}
+nav a {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–muted);
+text-decoration: none;
+transition: color 0.3s;
+position: relative;
+}
+nav a::after {
+content: ‘’;
+position: absolute;
+bottom: -3px; left: 0;
+width: 0; height: 1px;
+background: var(–gold);
+transition: width 0.3s;
+}
+nav a:hover { color: var(–gold); }
+nav a:hover::after { width: 100%; }
+
+/* ── HERO ── */
+#hero {
+min-height: 100vh;
+display: grid;
+grid-template-columns: 1fr 1fr;
+position: relative;
+overflow: hidden;
+}
+
+.hero-left {
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+padding: 0 4rem 6rem 4rem;
+position: relative;
+z-index: 2;
+}
+
+.hero-eyebrow {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.65rem;
+letter-spacing: 0.3em;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 1.5rem;
+opacity: 0;
+animation: slideUp 0.8s 0.8s forwards;
+}
+
+h1 {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: clamp(4rem, 7vw, 7rem);
+font-weight: 900;
+line-height: 0.9;
+letter-spacing: -0.02em;
+opacity: 0;
+animation: slideUp 0.9s 1s forwards;
+}
+h1 em {
+font-style: italic;
+color: var(–gold);
+}
+.hero-surname {
+display: block;
+color: var(–warm-white);
+-webkit-text-stroke: 1px rgba(242, 237, 230, 0.2);
+}
+
+.hero-bio {
+margin-top: 2.5rem;
+font-size: 1.1rem;
+font-weight: 300;
+line-height: 1.7;
+color: rgba(232, 224, 212, 0.7);
+max-width: 420px;
+opacity: 0;
+animation: slideUp 0.9s 1.2s forwards;
+}
+
+.hero-cta {
+margin-top: 3rem;
+display: flex;
+gap: 1.5rem;
+align-items: center;
+opacity: 0;
+animation: slideUp 0.9s 1.4s forwards;
+}
+
+.btn-primary {
+display: inline-flex;
+align-items: center;
+gap: 0.75rem;
+padding: 1rem 2rem;
+background: var(–gold);
+color: var(–black);
+font-family: ‘DM Mono’, monospace;
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+text-decoration: none;
+transition: all 0.3s;
+}
+.btn-primary:hover {
+background: var(–gold-light);
+transform: translateY(-2px);
+}
+
+.btn-ghost {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–muted);
+text-decoration: none;
+transition: color 0.3s;
+}
+.btn-ghost:hover { color: var(–warm-white); }
+
+.hero-right {
+position: relative;
+overflow: hidden;
+}
+
+.hero-visual {
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, #1a1408 0%, #2a1f0f 30%, #0d0d0d 70%, #080808 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.film-strip {
+position: absolute;
+top: 0; right: 0;
+width: 60%;
+height: 100%;
+display: flex;
+flex-direction: column;
+gap: 4px;
+opacity: 0;
+animation: fadeIn 1.5s 1.5s forwards;
+}
+
+.film-frame {
+flex: 1;
+background: rgba(201,169,110,0.04);
+border: 1px solid rgba(201,169,110,0.06);
+position: relative;
+overflow: hidden;
+}
+.film-frame::before {
+content: ‘’;
+position: absolute;
+top: 50%; left: 10px;
+transform: translateY(-50%);
+width: 8px; height: 8px;
+border-radius: 50%;
+background: rgba(201,169,110,0.15);
+}
+.film-frame::after {
+content: ‘’;
+position: absolute;
+top: 50%; right: 10px;
+transform: translateY(-50%);
+width: 8px; height: 8px;
+border-radius: 50%;
+background: rgba(201,169,110,0.15);
+}
+
+.hero-name-bg {
+position: absolute;
+bottom: 2rem; left: 2rem;
+font-family: ‘Playfair Display’, serif;
+font-size: 10rem;
+font-weight: 900;
+font-style: italic;
+color: rgba(201,169,110,0.04);
+line-height: 1;
+pointer-events: none;
+white-space: nowrap;
+}
+
+/* Scroll indicator */
+.scroll-hint {
+position: absolute;
+bottom: 2.5rem; right: 3rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 0.5rem;
+opacity: 0;
+animation: fadeIn 1s 2s forwards;
+}
+.scroll-hint span {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.55rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–muted);
+writing-mode: vertical-rl;
+}
+.scroll-line {
+width: 1px;
+height: 60px;
+background: linear-gradient(to bottom, var(–gold), transparent);
+animation: scrollPulse 2s 2.5s ease-in-out infinite;
+}
+
+/* ── SECTION COMMONS ── */
+section {
+padding: 8rem 4rem;
+max-width: 1400px;
+margin: 0 auto;
+}
+
+.section-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.6rem;
+letter-spacing: 0.4em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 4rem;
+display: flex;
+align-items: center;
+gap: 1.5rem;
+}
+.section-label::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: linear-gradient(90deg, rgba(201,169,110,0.3), transparent);
+}
+
+h2 {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: clamp(2.5rem, 4vw, 4rem);
+font-weight: 700;
+line-height: 1.1;
+margin-bottom: 1.5rem;
+}
+
+/* ── ABOUT ── */
+#about {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 8rem;
+align-items: center;
+padding-top: 6rem;
+padding-bottom: 6rem;
+border-top: 1px solid rgba(201,169,110,0.1);
+}
+
+.about-quote {
+font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+font-weight: 300;
+font-style: italic;
+line-height: 1.4;
+color: var(–warm-white);
+border-left: 2px solid var(–gold);
+padding-left: 2rem;
+}
+
+.about-text p {
+font-size: 1.15rem;
+line-height: 1.8;
+color: rgba(232, 224, 212, 0.7);
+font-weight: 300;
+margin-bottom: 1.5rem;
+}
+
+.stats-row {
+display: flex;
+gap: 3rem;
+margin-top: 3rem;
+padding-top: 2rem;
+border-top: 1px solid rgba(201,169,110,0.1);
+}
+.stat-item {}
+.stat-num {
+font-family: ‘Playfair Display’, serif;
+font-size: 2.5rem;
+font-weight: 900;
+color: var(–gold);
+line-height: 1;
+}
+.stat-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.6rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–muted);
+margin-top: 0.25rem;
+}
+
+/* ── EXPERIENCE ── */
+#experience {
+border-top: 1px solid rgba(201,169,110,0.1);
+}
+
+.exp-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2px;
+}
+
+.exp-card {
+background: var(–off-black);
+padding: 3rem;
+position: relative;
+overflow: hidden;
+transition: transform 0.4s ease;
+}
+.exp-card:hover { transform: translateY(-4px); }
+.exp-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0;
+width: 2px;
+height: 0;
+background: var(–gold);
+transition: height 0.4s ease;
+}
+.exp-card:hover::before { height: 100%; }
+
+.exp-card.featured {
+grid-column: span 2;
+background: linear-gradient(135deg, #1a1408, #111111);
+border: 1px solid rgba(201,169,110,0.15);
+}
+.exp-card.featured::before { display: none; }
+
+.exp-org {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.6rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 0.75rem;
+}
+.exp-role {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.6rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+color: var(–warm-white);
+}
+.exp-date {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.6rem;
+letter-spacing: 0.15em;
+color: var(–muted);
+margin-bottom: 1.5rem;
+}
+.exp-desc {
+font-size: 1rem;
+line-height: 1.7;
+color: rgba(232, 224, 212, 0.6);
+font-weight: 300;
+}
+
+.exp-highlights {
+margin-top: 1.5rem;
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
+}
+.tag {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.55rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+padding: 0.35rem 0.75rem;
+border: 1px solid rgba(201,169,110,0.25);
+color: var(–gold);
+}
+
+/* ── SKILLS ── */
+#skills {
+border-top: 1px solid rgba(201,169,110,0.1);
+}
+
+.skills-layout {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 6rem;
+align-items: start;
+}
+
+.skill-group {
+margin-bottom: 2.5rem;
+}
+.skill-group-title {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.6rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 1.25rem;
+}
+.skill-list {
+list-style: none;
+}
+.skill-list li {
+display: flex;
+align-items: center;
+gap: 1rem;
+padding: 0.75rem 0;
+border-bottom: 1px solid rgba(255,255,255,0.04);
+font-size: 1rem;
+color: rgba(232, 224, 212, 0.8);
+font-weight: 300;
+}
+.skill-list li::before {
+content: ‘’;
+width: 4px; height: 4px;
+background: var(–gold);
+border-radius: 50%;
+flex-shrink: 0;
+}
+
+.edu-block {
+margin-bottom: 2.5rem;
+padding-bottom: 2.5rem;
+border-bottom: 1px solid rgba(201,169,110,0.1);
+}
+.edu-block:last-child { border-bottom: none; }
+.edu-inst {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.4rem;
+font-weight: 700;
+margin-bottom: 0.25rem;
+}
+.edu-degree {
+font-size: 1rem;
+color: var(–gold);
+margin-bottom: 0.25rem;
+font-style: italic;
+}
+.edu-detail {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.6rem;
+letter-spacing: 0.2em;
+color: var(–muted);
+}
+
+/* ── FEATURED ── */
+#featured {
+border-top: 1px solid rgba(201,169,110,0.1);
+padding-top: 8rem;
+}
+
+.featured-grid {
+display: grid;
+grid-template-columns: 2fr 1fr;
+gap: 2px;
+}
+
+.feat-card {
+background: var(–off-black);
+padding: 3.5rem;
+position: relative;
+overflow: hidden;
+min-height: 350px;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+}
+.feat-card::after {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 60%);
+}
+
+.feat-card-bg {
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, #1a120a 0%, #0a0a14 100%);
+}
+
+.feat-content { position: relative; z-index: 1; }
+
+.feat-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.55rem;
+letter-spacing: 0.4em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 1rem;
+}
+.feat-title {
+font-family: ‘Playfair Display’, serif;
+font-size: 2rem;
+font-style: italic;
+margin-bottom: 0.75rem;
+}
+.feat-desc {
+font-size: 0.95rem;
+line-height: 1.6;
+color: rgba(232, 224, 212, 0.6);
+font-weight: 300;
+}
+
+.feat-side {
+display: flex;
+flex-direction: column;
+gap: 2px;
+}
+.feat-small {
+flex: 1;
+background: var(–off-black);
+padding: 2.5rem;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+position: relative;
+overflow: hidden;
+min-height: 170px;
+}
+.feat-small::after {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 70%);
+}
+.feat-small-bg {
+position: absolute;
+inset: 0;
+}
+.feat-small:nth-child(1) .feat-small-bg {
+background: linear-gradient(135deg, #140a0a, #080808);
+}
+.feat-small:nth-child(2) .feat-small-bg {
+background: linear-gradient(135deg, #0a0a14, #0d0808);
+}
+.feat-small-content { position: relative; z-index: 1; }
+.feat-small-title {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.1rem;
+font-style: italic;
+margin-bottom: 0.25rem;
+}
+.feat-small-sub {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.55rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–gold);
+}
+
+/* ── CONTACT ── */
+#contact {
+border-top: 1px solid rgba(201,169,110,0.1);
+text-align: center;
+padding: 10rem 4rem;
+position: relative;
+overflow: hidden;
+}
+#contact::before {
+content: ‘CONTACT’;
+position: absolute;
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+font-family: ‘Playfair Display’, serif;
+font-size: 20vw;
+font-weight: 900;
+color: rgba(201,169,110,0.03);
+white-space: nowrap;
+pointer-events: none;
+}
+
+.contact-title {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2.5rem, 5vw, 5rem);
+font-weight: 700;
+margin-bottom: 1rem;
+position: relative;
+}
+.contact-title em { color: var(–gold); font-style: italic; }
+
+.contact-sub {
+font-size: 1.1rem;
+color: var(–muted);
+font-weight: 300;
+margin-bottom: 4rem;
+position: relative;
+}
+
+.contact-links {
+display: flex;
+justify-content: center;
+gap: 2rem;
+flex-wrap: wrap;
+position: relative;
+}
+
+.contact-link {
+display: inline-flex;
+align-items: center;
+gap: 0.75rem;
+padding: 1.1rem 2.5rem;
+border: 1px solid rgba(201,169,110,0.3);
+color: var(–warm-white);
+text-decoration: none;
+font-family: ‘DM Mono’, monospace;
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+transition: all 0.3s;
+position: relative;
+overflow: hidden;
+}
+.contact-link::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: var(–gold);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.3s ease;
+}
+.contact-link span { position: relative; z-index: 1; }
+.contact-link:hover { color: var(–black); border-color: var(–gold); }
+.contact-link:hover::before { transform: scaleX(1); }
+
+/* ── FOOTER ── */
+footer {
+padding: 2rem 4rem;
+border-top: 1px solid rgba(201,169,110,0.1);
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.footer-name {
+font-family: ‘Playfair Display’, serif;
+font-style: italic;
+color: var(–gold);
+font-size: 1rem;
+}
+.footer-copy {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.55rem;
+letter-spacing: 0.2em;
+color: var(–muted);
+text-transform: uppercase;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+@keyframes slideUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+0%, 100% { opacity: 0.4; transform: scaleY(1); }
+50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+.reveal {
+opacity: 0;
+transform: translateY(40px);
+transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+header { padding: 1.25rem 1.5rem; }
+nav { gap: 1.5rem; }
+section { padding: 5rem 1.5rem; }
+#hero { grid-template-columns: 1fr; }
+.hero-left { padding: 9rem 1.5rem 4rem; }
+.hero-right { min-height: 40vh; }
+#about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
+.exp-grid { grid-template-columns: 1fr; }
+.exp-card.featured { grid-column: span 1; }
+.skills-layout { grid-template-columns: 1fr; gap: 3rem; }
+.featured-grid { grid-template-columns: 1fr; }
+.feat-side { flex-direction: row; }
+footer { flex-direction: column; gap: 1rem; text-align: center; }
+body { cursor: auto; }
+.cursor, .cursor-ring { display: none; }
+.stats-row { gap: 2rem; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- HEADER -->
+
+<header>
+  <div class="logo">Millie Islam — Portfolio</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#featured">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+
+<section id="hero" style="padding:0; max-width:100%; margin:0;">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Media Practitioner · Storyteller · UCL</div>
+    <h1>
+      <em>Millie</em>
+      <span class="hero-surname">Islam</span>
+    </h1>
+    <p class="hero-bio">
+      Editorial and film-focused media practitioner with a passion for visual storytelling, digital content, and creative direction. Based in London.
+    </p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn-primary"><span>View My Work</span> →</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="film-strip">
+        <div class="film-frame"></div>
+        <div class="film-frame"></div>
+        <div class="film-frame"></div>
+        <div class="film-frame"></div>
+        <div class="film-frame"></div>
+        <div class="film-frame"></div>
+        <div class="film-frame"></div>
+        <div class="film-frame"></div>
+      </div>
+      <div class="hero-name-bg">M</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="about-quote reveal">
+    "Driven by a curiosity for visual culture, narrative, and the spaces where editorial meets screen."
+  </div>
+  <div class="about-text">
+    <div class="section-label reveal">About</div>
+    <p class="reveal reveal-delay-1">
+      Currently studying BA Media at University College London — averaging a First — I've built hands-on experience across film production, fashion editorial, literary script assessment, and digital content strategy.
+    </p>
+    <p class="reveal reveal-delay-2">
+      From a placement at the British Film Institute to leading UCL's MODO Fashion Society as Head of Production, I bring creative vision together with meticulous execution.
+    </p>
+    <div class="stats-row reveal reveal-delay-3">
+      <div class="stat-item">
+        <div class="stat-num">1st</div>
+        <div class="stat-label">UCL Average</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">BFI</div>
+        <div class="stat-label">Placement</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2026</div>
+        <div class="stat-label">Film XPO Select</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+
+<section id="experience">
+  <div class="section-label reveal">Experience</div>
+  <div class="exp-grid">
+
+```
+<div class="exp-card featured reveal">
+  <div class="exp-org">British Film Institute</div>
+  <div class="exp-role">Industry Work Placement</div>
+  <div class="exp-date">April — June 2025</div>
+  <div class="exp-desc">
+    A formative placement at one of the world's foremost film institutions. Produced a feature-length editorial article with potential for publication in <em>Sight & Sound</em>, a video essay on visual culture presented to BFI professionals, and a short-form promotional film for the BFI National Archive. Gained firsthand exposure to production, distribution, archiving, and criticism — including a visit to Industrial Light & Magic (ILM).
+  </div>
+  <div class="exp-highlights">
+    <span class="tag">Editorial Writing</span>
+    <span class="tag">Video Essay</span>
+    <span class="tag">Film Production</span>
+    <span class="tag">VFX / ILM Visit</span>
+    <span class="tag">Sight & Sound</span>
+  </div>
+</div>
+
+<div class="exp-card reveal reveal-delay-1">
+  <div class="exp-org">UCL MODO Fashion Society</div>
+  <div class="exp-role">Head of Production</div>
+  <div class="exp-date">2025 — Present</div>
+  <div class="exp-desc">
+    Leading end-to-end delivery of large-scale events including a university fashion show and magazine launch. Overseeing timelines, logistics, stakeholder coordination, venue sourcing, and budget management.
+  </div>
+  <div class="exp-highlights">
+    <span class="tag">Event Production</span>
+    <span class="tag">Creative Direction</span>
+    <span class="tag">Budget Management</span>
+  </div>
+</div>
+
+<div class="exp-card reveal reveal-delay-2">
+  <div class="exp-org">Knight Hall Literary Agency</div>
+  <div class="exp-role">Script Reader & Assessor</div>
+  <div class="exp-date">April 2022</div>
+  <div class="exp-desc">
+    Read and assessed scripts for stage and screen adaptation, delivering structured feedback on narrative structure, thematic strength, and commercial viability. Managed professional correspondence with clients and production companies.
+  </div>
+  <div class="exp-highlights">
+    <span class="tag">Script Coverage</span>
+    <span class="tag">Story Analysis</span>
+    <span class="tag">Client Liaison</span>
+  </div>
+</div>
+
+<div class="exp-card reveal reveal-delay-3">
+  <div class="exp-org">KidsArtUK</div>
+  <div class="exp-role">Social Media Manager</div>
+  <div class="exp-date">May — November 2022</div>
+  <div class="exp-desc">
+    Developed and delivered cross-platform social content across Instagram and Facebook, including editorial-style reviews, original photography, and engagement-led formats. Maintained brand consistency and managed audience communications.
+  </div>
+  <div class="exp-highlights">
+    <span class="tag">Content Strategy</span>
+    <span class="tag">Instagram</span>
+    <span class="tag">Photography</span>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+
+<section id="featured">
+  <div class="section-label reveal">Selected Projects</div>
+  <div class="featured-grid">
+    <div class="feat-card reveal">
+      <div class="feat-card-bg"></div>
+      <div class="feat-content">
+        <div class="feat-label">Film — Producer & Co-Writer</div>
+        <div class="feat-title">NEST</div>
+        <div class="feat-desc">Selected for screening at The New Black Film Collective (TNBFC) XPO 2026 — a prestigious industry showcase for emerging Black filmmakers and collaborators. Co-written and produced from concept through to completion.</div>
+        <div style="margin-top:1.5rem;">
+          <span class="tag">Film Production</span>
+          <span class="tag">Screenwriting</span>
+          <span class="tag">TNBFC XPO 2026</span>
+        </div>
+      </div>
+    </div>
+    <div class="feat-side">
+      <div class="feat-small reveal reveal-delay-1">
+        <div class="feat-small-bg"></div>
+        <div class="feat-small-content">
+          <div class="feat-small-title">MODO Editorial Shoots</div>
+          <div class="feat-small-sub">Creative Director · Writer</div>
+        </div>
+      </div>
+      <div class="feat-small reveal reveal-delay-2">
+        <div class="feat-small-bg"></div>
+        <div class="feat-small-content">
+          <div class="feat-small-title">BFI National Archive Film</div>
+          <div class="feat-small-sub">Director · Producer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS + EDUCATION -->
+
+<section id="skills">
+  <div class="section-label reveal">Skills & Education</div>
+  <div class="skills-layout">
+    <div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Production & Craft</div>
+        <ul class="skill-list">
+          <li>Film & Video Production</li>
+          <li>Screenwriting & Copywriting</li>
+          <li>Creative Direction</li>
+          <li>Editorial Writing</li>
+          <li>Script Analysis & Coverage</li>
+          <li>Video Essay Production</li>
+        </ul>
+      </div>
+      <div class="skill-group reveal reveal-delay-1">
+        <div class="skill-group-title">Digital & Strategy</div>
+        <ul class="skill-list">
+          <li>Social Media Strategy</li>
+          <li>Content Creation</li>
+          <li>Digital Storytelling</li>
+          <li>Brand & Visual Identity</li>
+          <li>Audience Engagement</li>
+          <li>Production Logistics</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="section-label reveal" style="font-size:0.55rem; margin-bottom:2rem;">Education</div>
+      <div class="edu-block reveal reveal-delay-1">
+        <div class="edu-inst">University College London</div>
+        <div class="edu-degree">BA Media — Averaging a First</div>
+        <div class="edu-detail">2023 — 2026</div>
+      </div>
+      <div class="edu-block reveal reveal-delay-2">
+        <div class="edu-inst">Ashmole Academy</div>
+        <div class="edu-degree">A-Levels</div>
+        <div class="edu-detail">Media Studies · A &nbsp;|&nbsp; Sociology · B &nbsp;|&nbsp; English Lit · B</div>
+        <div class="edu-detail" style="margin-top:0.25rem;">2021 — 2023</div>
+      </div>
+      <div class="edu-block reveal reveal-delay-3">
+        <div class="edu-inst">Professional Development</div>
+        <div class="edu-degree" style="color:var(--muted);">MOOCs</div>
+        <div class="edu-detail">Introduction to Screenwriting</div>
+        <div class="edu-detail">The Business of Film</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="contact-title reveal">Let's <em>work</em> together</div>
+  <p class="contact-sub reveal">Open to editorial, production, and creative opportunities in London and beyond.</p>
+  <div class="contact-links reveal">
+    <a href="mailto:millieislam@icloud.com" class="contact-link"><span>✉ millieislam@icloud.com</span></a>
+    <a href="tel:+447412931822" class="contact-link"><span>✆ +44 7412 931 822</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Millie Islam</div>
+  <div class="footer-copy">Media · Film · Editorial · London</div>
+  <div class="footer-copy">© 2025</div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animateCursor() {
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) *.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      ring.style.width = '60px';
+      ring.style.height = '60px';
+      ring.style.borderColor = 'rgba(201,169,110,0.8)';
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.style.width = '36px';
+      ring.style.height = '36px';
+      ring.style.borderColor = 'rgba(201,169,110,0.5)';
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
