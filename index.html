@@ -6,370 +6,211 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Portfolio of Millie Islam, London-based media student specialising in film, editorial and digital content.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #050810;
-      --bg-elevated: #0b101c;
-      --accent: #f97316;
-      --accent-soft: rgba(249,115,22,0.12);
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --border-subtle: #1f2933;
-      --chip-bg: #111827;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 55%);
-      color: var(--text-main);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <div class="nav-left">
+        <div class="nav-logo">MI</div>
+        <div>
+          <div class="nav-title">Millie Islam</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 1.75rem 1.25rem 3rem;
-    }
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div>
+          <div class="badge-row">
+            <span class="badge">Media &amp; film</span>
+            <span>London · UCL Media (Final year)</span>
+          </div>
+          <h1 class="hero-title">
+            Emerging media creative focused on film, editorial and digital storytelling.
+          </h1>
+          <p class="hero-kicker">
+            Millie works across short film, fashion editorials and digital content for cultural organisations,
+            blending research-driven storytelling with production coordination.
+          </p>
+          <div class="hero-meta">
+            <span>Currently: Head of Production · UCL MODO Fashion Society</span>
+            <span>Recent: BFI, Knight Hall Literary Agency, KidsArtUK</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#projects">View selected work</a>
+            <a class="btn-ghost" href="#contact">Request full CV</a>
+          </div>
+        </div>
 
-    /* Top nav */
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 2.5rem;
-    }
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-    }
-    .nav-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Poppins', system-ui, sans-serif;
-      font-weight: 600;
-      font-size: .9rem;
-      background: linear-gradient(135deg, #1f2937, #020617);
-    }
-    .nav-title {
-      font-family: 'Poppins', system-ui, sans-serif;
-      font-weight: 500;
-      letter-spacing: .09em;
-      font-size: .75rem;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .nav-links {
-      display: flex;
-      gap: 1.2rem;
-      font-size: .9rem;
-      color: var(--text-muted);
-    }
-    .nav-links a {
-      position: relative;
-      padding-bottom: .1rem;
-    }
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: var(--accent);
-      transition: width .25s ease;
-    }
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+        <aside class="hero-frame" aria-label="Recent highlight">
+          <div class="hero-frame-label">Recent highlight</div>
+          <div class="hero-frame-main">
+            <em>NEST</em> · Short film selected for The New Black Film Collective (TNC) XPO 2026.
+          </div>
+          <div class="hero-frame-meta">
+            Producer &amp; Co-writer · London · 2026
+          </div>
+          <div class="hero-tags">
+            <span class="hero-tag">Short film</span>
+            <span class="hero-tag">Producing</span>
+            <span class="hero-tag">Writing</span>
+            <span class="hero-tag">Festival selection</span>
+          </div>
+        </aside>
+      </section>
 
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0,1.6fr) minmax(0,1.1fr);
-      gap: 2.4rem;
-      align-items: center;
-      margin-top: 2.4rem;
-      margin-bottom: 3rem;
-    }
-    .badge-row {
-      display: flex;
-      align-items: center;
-      gap: .7rem;
-      margin-bottom: 1rem;
-      font-size: .8rem;
-      color: var(--text-muted);
-    }
-    .badge {
-      padding: .15rem .55rem;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: .7rem;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-    }
-    .hero-title {
-      font-family: 'Poppins', system-ui, sans-serif;
-      font-weight: 600;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      letter-spacing: .01em;
-      margin-bottom: .75rem;
-    }
-    .hero-kicker {
-      font-size: .95rem;
-      color: var(--text-muted);
-      max-width: 32rem;
-      margin-bottom: 1.4rem;
-    }
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-      font-size: .85rem;
-      color: var(--text-muted);
-      margin-bottom: 1.8rem;
-    }
-    .chip {
-      padding: .25rem .7rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: var(--chip-bg);
-      font-size: .78rem;
-      color: var(--text-muted);
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .9rem;
-    }
-    .btn-primary,
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      font-size: .87rem;
-      border-radius: 999px;
-      padding: .45rem .95rem;
-      border: 1px solid transparent;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background .2s ease, transform .15s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #f97316, #fb923c);
-      color: #111827;
-      box-shadow: 0 14px 30px rgba(15,23,42,.45);
-    }
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(15,23,42,.6);
-    }
-    .btn-ghost {
-      border-color: var(--border-subtle);
-      color: var(--text-muted);
-      background: rgba(15,23,42,.6);
-    }
-    .btn-ghost:hover {
-      background: rgba(15,23,42,.9);
-    }
+      <!-- Projects -->
+      <section id="projects">
+        <div class="section-header">
+          <h2 class="section-title">Selected projects</h2>
+          <div class="section-sub">Film · editorial · social · events</div>
+        </div>
 
-    .hero-frame {
-      background: radial-gradient(circle at top, #1f2937 0, #020617 65%);
-      border-radius: 1.4rem;
-      padding: 1.6rem 1.8rem;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 24px 60px rgba(15,23,42,.8);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-frame-label {
-      font-size: .7rem;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      color: var(--text-muted);
-      margin-bottom: .7rem;
-    }
-    .hero-frame-main {
-      font-family: 'Poppins', system-ui, sans-serif;
-      font-weight: 500;
-      font-size: .95rem;
-      color: var(--text-main);
-      margin-bottom: .9rem;
-    }
-    .hero-frame-meta {
-      font-size: .8rem;
-      color: var(--text-muted);
-      margin-bottom: .9rem;
-    }
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .35rem;
-    }
-    .hero-tag {
-      font-size: .75rem;
-      padding: .18rem .55rem;
-      border-radius: 999px;
-      background: rgba(15,23,42,.8);
-      border: 1px solid rgba(148,163,184,.5);
-    }
+        <div class="projects-grid">
+          <a class="project-card" href="project-nest.html">
+            <div class="project-tag-row">
+              <span class="project-type">Film · Narrative</span>
+              <span class="project-year">2026</span>
+            </div>
+            <div class="project-title"><em>NEST</em></div>
+            <div class="project-role">Producer &amp; Co-writer</div>
+            <p class="project-description">
+              Short film exploring contemporary themes, selected for The New Black Film Collective (TNC) XPO 2026.
+            </p>
+            <div class="project-meta">
+              <span>Festival selection</span>
+              <span>View case study →</span>
+            </div>
+          </a>
 
-    /* Section shell */
-    section {
-      margin-bottom: 2.7rem;
-    }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 1.5rem;
-    }
-    .section-title {
-      font-size: .82rem;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .section-sub {
-      font-size: .82rem;
-      color: var(--text-muted);
-    }
+          <div class="project-card">
+            <div class="project-tag-row">
+              <span class="project-type">Editorial · Video essay</span>
+              <span class="project-year">2025</span>
+            </div>
+            <div class="project-title">British Film Institute placement</div>
+            <div class="project-role">Editorial &amp; video</div>
+            <p class="project-description">
+              Feature article, video essay on visual culture and a short promotional film for the BFI National Archive.
+            </p>
+            <div class="project-meta">
+              <span>BFI · London</span>
+              <span>Case study coming soon</span>
+            </div>
+          </div>
 
-    /* Projects grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.4rem;
-    }
-    .project-card {
-      background: linear-gradient(145deg, rgba(15,23,42,.9), #020617);
-      border-radius: 1.1rem;
-      border: 1px solid var(--border-subtle);
-      padding: 1rem 1.1rem 1.1rem;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
-    }
-    .project-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 22px 45px rgba(15,23,42,.8);
-      border-color: rgba(249,115,22,.45);
-      background: radial-gradient(circle at top left, rgba(249,115,22,.16), rgba(15,23,42,.95));
-    }
-    .project-tag-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: .65rem;
-      font-size: .78rem;
-      color: var(--text-muted);
-    }
-    .project-type {
-      padding: .15rem .55rem;
-      border-radius: 999px;
-      background: rgba(15,23,42,.8);
-      border: 1px solid #334155;
-    }
-    .project-year {
-      font-size: .78rem;
-    }
-    .project-title {
-      font-family: 'Poppins', system-ui, sans-serif;
-      font-weight: 500;
-      font-size: .98rem;
-      margin-bottom: .12rem;
-    }
-    .project-role {
-      font-size: .82rem;
-      color: var(--text-muted);
-      margin-bottom: .4rem;
-    }
-    .project-description {
-      font-size: .86rem;
-      color: #e5e7eb;
-      margin-bottom: .6rem;
-    }
-    .project-meta {
-      font-size: .78rem;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+          <div class="project-card">
+            <div class="project-tag-row">
+              <span class="project-type">Fashion · Editorial</span>
+              <span class="project-year">2025</span>
+            </div>
+            <div class="project-title">UCL MODO fashion editorials</div>
+            <div class="project-role">Creative direction &amp; writing</div>
+            <p class="project-description">
+              Concept, creative direction and scripts for two fashion editorial shoots with UCL MODO Fashion Society.
+            </p>
+            <div class="project-meta">
+              <span>Editorial shoots</span>
+              <span>Case study coming soon</span>
+            </div>
+          </div>
 
-    /* About + skills row */
-    .about-row {
-      display: grid;
-      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
-      gap: 2.2rem;
-    }
-    .about-text {
-      font-size: .92rem;
-      color: var(--text-muted);
-      max-width: 34rem;
-    }
-    .skills-block-title {
-      font-size: .82rem;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      color: var(--text-muted);
-      margin-bottom: .5rem;
-    }
-    .skill-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: .25rem;
-      padding: .24rem .7rem;
-      border-radius: 999px;
-      background: rgba(15,23,42,.85);
-      border: 1px solid #374151;
-      font-size: .8rem;
-      color: #e5e7eb;
-      margin: .16rem .35rem .16rem 0;
-    }
+          <div class="project-card">
+            <div class="project-tag-row">
+              <span class="project-type">Social · Campaign</span>
+              <span class="project-year">2022</span>
+            </div>
+            <div class="project-title">KidsArtUK social presence</div>
+            <div class="project-role">Social media manager</div>
+            <p class="project-description">
+              Interactive campaigns, visual content and cross-platform coordination for a children’s arts organisation.
+            </p>
+            <div class="project-meta">
+              <span>Instagram · Facebook</span>
+              <span>Case study coming soon</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    /* Contact */
-    .contact-panel {
-      background: linear-gradient(135deg, #020617, #111827);
-      border-radius: 1.25rem;
-      border: 1px solid var(--border-subtle);
-      padding: 1.4rem 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-    .contact-text {
-      font-size: .9rem;
-      color: var(--text-muted);
-    }
-    .contact-text strong {
-      color: var(--text-main);
-      font-weight: 500;
-    }
+      <!-- About -->
+      <section id="about">
+        <div class="section-header">
+          <h2 class="section-title">Profile &amp; skills</h2>
+        </div>
 
-    footer {
-      margin-top: 2.2rem;
-      font-size: .76rem;
-      color: var(--text-muted);
-      text-align: center;
-    }
+        <div class="about-row">
+          <div class="about-text">
+            <p>
+              Millie is a London-based media student at University College London, working across editorial,
+              film and digital content. She has supported projects at the British Film Institute, Knight Hall
+              Literary Agency and KidsArtUK, alongside leading production for UCL MODO Fashion Society.
+            </p>
+            <p style="margin-top: .9rem;">
+              Her experience spans research, copywriting, script development, event production and social media.
+              She is particularly interested in audience-focused storytelling that connects cultural organisations
+              with younger viewers.
+            </p>
+          </div>
 
-    @media (max-width: 800px) {
-      .hero {
-        
+          <div>
+            <div class="skills-block-title">Core capabilities</div>
+            <div>
+              <span class="skill-chip">Producing &amp; coordination</span>
+              <span class="skill-chip">Editorial &amp; copywriting</span>
+              <span class="skill-chip">Research &amp; development</span>
+              <span class="skill-chip">Event production</span>
+              <span class="skill-chip">Digital &amp; social content</span>
+              <span class="skill-chip">Script &amp; story development</span>
+            </div>
+
+            <div style="margin-top: 1.2rem;">
+              <div class="skills-block-title">Education</div>
+              <div style="font-size:.85rem; color:var(--text-muted);">
+                BA Media, University College London (2023–2026) · Averaging a First<br>
+                A‑levels: Media Studies (A), Sociology (B), English Literature (B).<br>
+                Short courses: Introduction to Screenwriting, The Business of Film.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+        </div>
+        <div class="contact-panel">
+          <div class="contact-text">
+            <p><strong>Available for internships, assistant roles and collaborations.</strong></p>
+            <p>Based in London, open to hybrid and on-site opportunities across film, editorial and digital media.</p>
+            <p style="margin-top:.4rem;">
+              Email: <a href="mailto:millieislam@icloud.com">millieislam@icloud.com</a>
+            </p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:.5rem; align-items:flex-start;">
+            <a class="btn-primary" href="Millie-Islam-CV.pdf" target="_blank" rel="noreferrer">Download CV (PDF)</a>
+            <a class="btn-ghost" href="https://www.linkedin.com" target="_blank" rel="noreferrer">View LinkedIn profile</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; <span id="year"></span> Millie Islam. Built with GitHub Pages.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
