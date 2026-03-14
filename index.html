@@ -1,216 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Millie Islam · Media & Film Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfolio of Millie Islam, London-based media student specialising in film, editorial and digital content.">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Millie Islam</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --text: #e8e4df;
+  --text-muted: #8a8580;
+  --accent: #c43e2a;
+  --cream: #f0ebe4;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* GRAIN OVERLAY */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* HEADER */
+.header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(196,62,42,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(4rem, 12vw, 10rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0;
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+.contact {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0;
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+.contact a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact a:hover { color: var(--accent); }
+
+.contact span { margin: 0 1rem; opacity: 0.3; }
+
+.scroll-hint {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
+}
+
+.scroll-hint::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--text-muted), transparent);
+  margin: 0 auto;
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* ABOUT */
+.about {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 8rem 2rem 10rem;
+  text-align: center;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+}
+
+.about-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--text);
+}
+
+.about-text em {
+  font-style: italic;
+  color: var(--cream);
+}
+
+/* NAVIGATION BUTTONS */
+.nav-section {
+  padding: 4rem 2rem 12rem;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 340px;
+  height: 120px;
+  border: 1px solid rgba(232,228,223,0.15);
+  background: transparent;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.nav-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.nav-btn:hover::before { transform: scaleX(1); }
+
+.nav-btn:hover { border-color: var(--accent); }
+
+.nav-btn-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream);
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-btn:hover .nav-btn-text { transform: scale(1.05); }
+
+.nav-btn-arrow {
+  position: absolute;
+  right: 2rem;
+  font-size: 1.4rem;
+  color: var(--cream);
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-btn:hover .nav-btn-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid rgba(232,228,223,0.06);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-section { gap: 2rem; padding: 4rem 1.5rem 8rem; }
+  .nav-btn { width: 100%; max-width: 340px; height: 100px; }
+  .contact span { margin: 0 0.5rem; }
+}
+</style>
 </head>
 <body>
-  <div class="page">
-    <header class="nav">
-      <div class="nav-left">
-        <div class="nav-logo">MI</div>
-        <div>
-          <div class="nav-title">Millie Islam</div>
-        </div>
-      </div>
-      <nav class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
 
-    <main>
-      <!-- Hero -->
-      <section class="hero">
-        <div>
-          <div class="badge-row">
-            <span class="badge">Media &amp; film</span>
-            <span>London · UCL Media (Final year)</span>
-          </div>
-          <h1 class="hero-title">
-            Emerging media creative focused on film, editorial and digital storytelling.
-          </h1>
-          <p class="hero-kicker">
-            Millie works across short film, fashion editorials and digital content for cultural organisations,
-            blending research-driven storytelling with production coordination.
-          </p>
-          <div class="hero-meta">
-            <span>Currently: Head of Production · UCL MODO Fashion Society</span>
-            <span>Recent: BFI, Knight Hall Literary Agency, KidsArtUK</span>
-          </div>
-          <div class="hero-actions">
-            <a class="btn-primary" href="#projects">View selected work</a>
-            <a class="btn-ghost" href="#contact">Request full CV</a>
-          </div>
-        </div>
-
-        <aside class="hero-frame" aria-label="Recent highlight">
-          <div class="hero-frame-label">Recent highlight</div>
-          <div class="hero-frame-main">
-            <em>NEST</em> · Short film selected for The New Black Film Collective (TNC) XPO 2026.
-          </div>
-          <div class="hero-frame-meta">
-            Producer &amp; Co-writer · London · 2026
-          </div>
-          <div class="hero-tags">
-            <span class="hero-tag">Short film</span>
-            <span class="hero-tag">Producing</span>
-            <span class="hero-tag">Writing</span>
-            <span class="hero-tag">Festival selection</span>
-          </div>
-        </aside>
-      </section>
-
-      <!-- Projects -->
-      <section id="projects">
-        <div class="section-header">
-          <h2 class="section-title">Selected projects</h2>
-          <div class="section-sub">Film · editorial · social · events</div>
-        </div>
-
-        <div class="projects-grid">
-          <a class="project-card" href="project-nest.html">
-            <div class="project-tag-row">
-              <span class="project-type">Film · Narrative</span>
-              <span class="project-year">2026</span>
-            </div>
-            <div class="project-title"><em>NEST</em></div>
-            <div class="project-role">Producer &amp; Co-writer</div>
-            <p class="project-description">
-              Short film exploring contemporary themes, selected for The New Black Film Collective (TNC) XPO 2026.
-            </p>
-            <div class="project-meta">
-              <span>Festival selection</span>
-              <span>View case study →</span>
-            </div>
-          </a>
-
-          <div class="project-card">
-            <div class="project-tag-row">
-              <span class="project-type">Editorial · Video essay</span>
-              <span class="project-year">2025</span>
-            </div>
-            <div class="project-title">British Film Institute placement</div>
-            <div class="project-role">Editorial &amp; video</div>
-            <p class="project-description">
-              Feature article, video essay on visual culture and a short promotional film for the BFI National Archive.
-            </p>
-            <div class="project-meta">
-              <span>BFI · London</span>
-              <span>Case study coming soon</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-tag-row">
-              <span class="project-type">Fashion · Editorial</span>
-              <span class="project-year">2025</span>
-            </div>
-            <div class="project-title">UCL MODO fashion editorials</div>
-            <div class="project-role">Creative direction &amp; writing</div>
-            <p class="project-description">
-              Concept, creative direction and scripts for two fashion editorial shoots with UCL MODO Fashion Society.
-            </p>
-            <div class="project-meta">
-              <span>Editorial shoots</span>
-              <span>Case study coming soon</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-tag-row">
-              <span class="project-type">Social · Campaign</span>
-              <span class="project-year">2022</span>
-            </div>
-            <div class="project-title">KidsArtUK social presence</div>
-            <div class="project-role">Social media manager</div>
-            <p class="project-description">
-              Interactive campaigns, visual content and cross-platform coordination for a children’s arts organisation.
-            </p>
-            <div class="project-meta">
-              <span>Instagram · Facebook</span>
-              <span>Case study coming soon</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- About -->
-      <section id="about">
-        <div class="section-header">
-          <h2 class="section-title">Profile &amp; skills</h2>
-        </div>
-
-        <div class="about-row">
-          <div class="about-text">
-            <p>
-              Millie is a London-based media student at University College London, working across editorial,
-              film and digital content. She has supported projects at the British Film Institute, Knight Hall
-              Literary Agency and KidsArtUK, alongside leading production for UCL MODO Fashion Society.
-            </p>
-            <p style="margin-top: .9rem;">
-              Her experience spans research, copywriting, script development, event production and social media.
-              She is particularly interested in audience-focused storytelling that connects cultural organisations
-              with younger viewers.
-            </p>
-          </div>
-
-          <div>
-            <div class="skills-block-title">Core capabilities</div>
-            <div>
-              <span class="skill-chip">Producing &amp; coordination</span>
-              <span class="skill-chip">Editorial &amp; copywriting</span>
-              <span class="skill-chip">Research &amp; development</span>
-              <span class="skill-chip">Event production</span>
-              <span class="skill-chip">Digital &amp; social content</span>
-              <span class="skill-chip">Script &amp; story development</span>
-            </div>
-
-            <div style="margin-top: 1.2rem;">
-              <div class="skills-block-title">Education</div>
-              <div style="font-size:.85rem; color:var(--text-muted);">
-                BA Media, University College London (2023–2026) · Averaging a First<br>
-                A‑levels: Media Studies (A), Sociology (B), English Literature (B).<br>
-                Short courses: Introduction to Screenwriting, The Business of Film.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact">
-        <div class="section-header">
-          <h2 class="section-title">Contact</h2>
-        </div>
-        <div class="contact-panel">
-          <div class="contact-text">
-            <p><strong>Available for internships, assistant roles and collaborations.</strong></p>
-            <p>Based in London, open to hybrid and on-site opportunities across film, editorial and digital media.</p>
-            <p style="margin-top:.4rem;">
-              Email: <a href="mailto:millieislam@icloud.com">millieislam@icloud.com</a>
-            </p>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:.5rem; align-items:flex-start;">
-            <a class="btn-primary" href="Millie-Islam-CV.pdf" target="_blank" rel="noreferrer">Download CV (PDF)</a>
-            <a class="btn-ghost" href="https://www.linkedin.com" target="_blank" rel="noreferrer">View LinkedIn profile</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      &copy; <span id="year"></span> Millie Islam. Built with GitHub Pages.
-    </footer>
+<section class="header">
+  <h1 class="name">Millie<br>Islam</h1>
+  <div class="contact">
+    <a href="mailto:millieislam@icloud.com">millieislam@icloud.com</a>
+    <span>|</span>
+    <a href="tel:+447412931822">+44 7412 931822</a>
+    <span>|</span>
+    London, UK
   </div>
+  <div class="scroll-hint"></div>
+</section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<section class="about">
+  <div class="section-label">About</div>
+  <p class="about-text">
+    Final-year <em>BA Media</em> student at University College London, averaging a First. 
+    Interested in the intersection of film, editorial storytelling, and visual culture. 
+    Experience spans production at the <em>BFI</em>, creative direction for <em>UCL MODO Fashion Society</em>, 
+    script assessment at <em>Knight Hall Agency</em>, and digital content management for <em>KidsArtUK</em>. 
+    Currently producing and co-writing narrative short films while leading editorial shoots 
+    that interrogate identity, gender, and subcultural aesthetics.
+  </p>
+</section>
+
+<section class="nav-section">
+  <a href="film.html" class="nav-btn">
+    <span class="nav-btn-text">Film</span>
+    <span class="nav-btn-arrow">&rarr;</span>
+  </a>
+  <a href="creative.html" class="nav-btn">
+    <span class="nav-btn-text">Creative Direction</span>
+    <span class="nav-btn-arrow">&rarr;</span>
+  </a>
+</section>
+
+<footer class="footer">
+  &copy; 2026 Millie Islam
+</footer>
+
 </body>
 </html>

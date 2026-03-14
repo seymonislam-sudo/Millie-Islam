@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Film — Millie Islam</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --text: #e8e4df;
+  --text-muted: #8a8580;
+  --accent: #c43e2a;
+  --cream: #f0ebe4;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* BACK NAV */
+.back-nav {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 100;
+}
+
+.back-nav a {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-nav a:hover { color: var(--cream); }
+
+.back-nav a::before { content: '←'; font-size: 1rem; }
+
+/* HERO */
+.film-hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 8rem 2rem 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.film-title-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.film-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 0.95;
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+
+.film-role {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  margin-bottom: 3rem;
+}
+
+/* VIDEO EMBED PLACEHOLDER */
+.video-container {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  padding: 0 2rem;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: #111;
+  border: 1px solid rgba(232,228,223,0.08);
+  overflow: hidden;
+}
+
+.video-wrapper iframe,
+.video-wrapper .video-placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.video-placeholder .play-icon {
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(232,228,223,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.video-placeholder .play-icon::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 18px;
+  border-color: transparent transparent transparent var(--text-muted);
+  margin-left: 4px;
+}
+
+/* DESCRIPTION */
+.film-description {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.film-description .desc-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.film-description p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.9;
+  font-weight: 300;
+  color: var(--text);
+}
+
+/* SCREENING INFO */
+.screening {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+.screening-badge {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.4rem;
+  font-weight: 500;
+}
+
+.screening p {
+  margin-top: 1.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid rgba(232,228,223,0.06);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .film-hero { padding: 6rem 1.5rem 3rem; }
+  .video-container, .film-description, .screening { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="back-nav">
+  <a href="index.html">Millie Islam</a>
+</nav>
+
+<section class="film-hero">
+  <div class="section-label">Most Recent Short</div>
+  <h1 class="film-name">NEST</h1>
+  <div class="film-role">Producer &amp; Co-Writer</div>
+</section>
+
+<div class="video-container">
+  <div class="video-wrapper">
+    <!-- Replace the placeholder below with an iframe embed, e.g.: -->
+    <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe> -->
+    <div class="video-placeholder">
+      <div class="play-icon"></div>
+      Video coming soon
+    </div>
+  </div>
+</div>
+
+<div class="film-description">
+  <div class="desc-label">Synopsis</div>
+  <p>
+    In the urban working-class London landscape, young and isolated Agnes copes with 
+    the pain of her miscarriage by looking after a reborn baby, Gaia. Here, the fragile 
+    world she has constructed begins to crumble against the weight of reality as external 
+    forces threaten the perfection of Agnes's imagined family.
+  </p>
+</div>
+
+<div class="screening">
+  <span class="screening-badge">Official Selection</span>
+  <p>
+    Selected for screening at The New Black Film Collective (TNC) XPO 2026 — a platform 
+    dedicated to championing emerging Black and underrepresented filmmakers. The selection 
+    recognises <em>NEST</em> as a distinctive new voice in British short-form narrative, exploring 
+    themes of grief, motherhood, and identity against an authentic London backdrop.
+  </p>
+</div>
+
+<footer class="footer">
+  <a href="index.html" style="color: var(--text-muted); text-decoration: none;">&copy; 2026 Millie Islam</a>
+</footer>
+
+</body>
+</html>
