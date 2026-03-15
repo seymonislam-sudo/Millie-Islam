@@ -9,26 +9,17 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-:root {
-–bg: #0a0a0a;
-–text: #e8e4df;
-–text-muted: #8a8580;
-–accent: #c43e2a;
-–cream: #f0ebe4;
-}
-
 html { scroll-behavior: smooth; background-color: #0a0a0a; }
 
 body {
 background-color: #0a0a0a;
-color: var(–text);
+color: #e8e4df;
 font-family: ‘Inter’, sans-serif;
 font-weight: 300;
 overflow-x: hidden;
 -webkit-font-smoothing: antialiased;
 }
 
-/* HEADER */
 .header {
 min-height: 100vh;
 display: flex;
@@ -59,7 +50,7 @@ font-size: clamp(4rem, 12vw, 10rem);
 line-height: 0.9;
 letter-spacing: -0.03em;
 text-transform: uppercase;
-color: var(–cream);
+color: #f0ebe4;
 opacity: 0;
 animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
 }
@@ -69,18 +60,18 @@ margin-top: 2rem;
 font-size: 0.85rem;
 letter-spacing: 0.25em;
 text-transform: uppercase;
-color: var(–text-muted);
+color: #8a8580;
 opacity: 0;
 animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }
 
 .contact a {
-color: var(–text-muted);
+color: #8a8580;
 text-decoration: none;
 transition: color 0.3s;
 }
 
-.contact a:hover { color: var(–accent); }
+.contact a:hover { color: #c43e2a; }
 
 .contact span { margin: 0 1rem; opacity: 0.3; }
 
@@ -98,12 +89,11 @@ content: ‘’;
 display: block;
 width: 1px;
 height: 60px;
-background: linear-gradient(to bottom, var(–text-muted), transparent);
+background: linear-gradient(to bottom, #8a8580, transparent);
 margin: 0 auto;
 animation: scrollPulse 2s ease-in-out infinite;
 }
 
-/* ABOUT */
 .about {
 max-width: 800px;
 margin: 0 auto;
@@ -115,7 +105,7 @@ text-align: center;
 font-size: 0.7rem;
 letter-spacing: 0.4em;
 text-transform: uppercase;
-color: var(–accent);
+color: #c43e2a;
 margin-bottom: 2.5rem;
 font-weight: 500;
 }
@@ -125,15 +115,14 @@ font-family: ‘Cormorant Garamond’, serif;
 font-size: clamp(1.3rem, 2.5vw, 1.8rem);
 line-height: 1.8;
 font-weight: 300;
-color: var(–text);
+color: #e8e4df;
 }
 
 .about-text em {
 font-style: italic;
-color: var(–cream);
+color: #f0ebe4;
 }
 
-/* NAVIGATION BUTTONS */
 .nav-section {
 padding: 4rem 2rem 12rem;
 display: flex;
@@ -161,7 +150,7 @@ cursor: pointer;
 content: ‘’;
 position: absolute;
 inset: 0;
-background: var(–accent);
+background: #c43e2a;
 transform: scaleX(0);
 transform-origin: left;
 transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -169,8 +158,7 @@ z-index: 0;
 }
 
 .nav-btn:hover::before { transform: scaleX(1); }
-
-.nav-btn:hover { border-color: var(–accent); }
+.nav-btn:hover { border-color: #c43e2a; }
 
 .nav-btn-text {
 font-family: ‘Playfair Display’, serif;
@@ -178,7 +166,7 @@ font-size: 1.8rem;
 font-weight: 700;
 letter-spacing: 0.08em;
 text-transform: uppercase;
-color: var(–cream);
+color: #f0ebe4;
 z-index: 1;
 text-align: center;
 padding-left: 0.08em;
@@ -187,23 +175,6 @@ transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
 .nav-btn:hover .nav-btn-text { transform: scale(1.05); }
 
-.nav-btn-arrow {
-position: absolute;
-right: 2rem;
-font-size: 1.4rem;
-color: var(–cream);
-z-index: 1;
-opacity: 0;
-transform: translateX(-10px);
-transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.nav-btn:hover .nav-btn-arrow {
-opacity: 1;
-transform: translateX(0);
-}
-
-/* FOOTER */
 .footer {
 text-align: center;
 padding: 3rem 2rem;
@@ -211,10 +182,9 @@ border-top: 1px solid rgba(232,228,223,0.06);
 font-size: 0.7rem;
 letter-spacing: 0.2em;
 text-transform: uppercase;
-color: var(–text-muted);
+color: #8a8580;
 }
 
-/* ANIMATIONS */
 @keyframes fadeUp {
 from { opacity: 0; transform: translateY(30px); }
 to { opacity: 1; transform: translateY(0); }
@@ -225,10 +195,9 @@ to { opacity: 1; transform: translateY(0); }
 50% { opacity: 1; }
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
 .nav-section { gap: 2rem; padding: 4rem 1.5rem 8rem; }
-.nav-btn { width: 100%; max-width: 340px; height: 100px; }
+.nav-btn { width: 100%; max-width: 380px; height: 100px; }
 .contact span { margin: 0 0.5rem; }
 }
 </style>
@@ -239,7 +208,7 @@ to { opacity: 1; transform: translateY(0); }
 <section class="header">
   <h1 class="name">Millie<br>Islam</h1>
   <div class="contact">
-    <a href="/cdn-cgi/l/email-protection#cca1a5a0a0a5a9a5bfa0ada18ca5afa0a3b9a8e2afa3a1"><span class="__cf_email__" data-cfemail="8ee3e7e2e2e7ebe7fde2efe3cee7ede2e1fbeaa0ede1e3">[email&#160;protected]</span></a>
+    <a href="mailto:millieislam@icloud.com">millieislam@icloud.com</a>
     <span>|</span>
     <a href="tel:+447412931822">+44 7412 931822</a>
     <span>|</span>
@@ -263,7 +232,15 @@ to { opacity: 1; transform: translateY(0); }
 <section class="nav-section">
   <a href="film.html" class="nav-btn">
     <span class="nav-btn-text">Film</span>
-    <span class="nav-btn-arrow">&rarr;</span>
   </a>
   <a href="creative.html" class="nav-btn">
     <span class="nav-btn-text">Creative Direction</span>
+  </a>
+</section>
+
+<footer class="footer">
+  &copy; 2026 Millie Islam
+</footer>
+
+</body>
+</html>
