@@ -17,25 +17,15 @@
 –cream: #f0ebe4;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background-color: #0a0a0a; }
 
 body {
-background: var(–bg);
+background-color: #0a0a0a;
 color: var(–text);
 font-family: ‘Inter’, sans-serif;
 font-weight: 300;
 overflow-x: hidden;
 -webkit-font-smoothing: antialiased;
-}
-
-/* GRAIN OVERLAY */
-body::after {
-content: ‘’;
-position: fixed;
-inset: 0;
-background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.85’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.04’/%3E%3C/svg%3E”);
-pointer-events: none;
-z-index: 9999;
 }
 
 /* HEADER */
@@ -190,6 +180,8 @@ letter-spacing: 0.08em;
 text-transform: uppercase;
 color: var(–cream);
 z-index: 1;
+text-align: center;
+padding-left: 0.08em;
 transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
